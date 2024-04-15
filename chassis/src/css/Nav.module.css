@@ -1,0 +1,11 @@
+.nav {
+    background-color: var(--brand-red);
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 36px 28px;
+}

@@ -1,0 +1,30 @@
+.stepper {
+    display: flex;
+    gap: 4px;
+}
+
+.box {
+    color: var(--text-grey);
+    font-size: 16px;
+    border: 0.5px solid var(--detail-grey);
+    border-radius: 8px;
+    padding: 3px 6px;
+}
+
+button {
+    all: unset;
+    text-align: center;
+    width: 15px;
+}
+
+input {
+    all: unset;
+    text-align: center;
+    width: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

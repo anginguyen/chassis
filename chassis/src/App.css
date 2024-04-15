@@ -1,16 +1,20 @@
+html {
+  --brand-red: #E51837;
+  --text-grey: #4E5368;
+  --detail-grey: #9E9FAD;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button, input {
+  all: unset;
+}
+
 .parts-cards {
   display: flex;
   gap: 20px;
   justify-content: center;
-}
-
-.red-bar {
-  display: flex;
-  left: 0;
-  top: 0;
-  width: 100px; /* width of the red bar */
-  height: 100vh; /* full height of the viewport */
-  background-color: red; /* red color */
-  border-radius: 10px 10px 0 0; /* round the top corners */
-  /*z-index: 1000; /* ensures it's above other content */
 }
