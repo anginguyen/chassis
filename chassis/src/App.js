@@ -65,10 +65,22 @@ const items = [
     quantity: 1
   },
   {
-    name: "ACDelco Iridium Spark Plug",
+    name: "ACDelco Iridium Spark Plug Blah Blah Blah Blah",
     img: require("./img/Rectangle 36.png"),
     price: "$11.99",
     quantity: 2
+  },
+  {
+    name: "ACDelco Iridium Spark Plug",
+    img: require("./img/Rectangle 36.png"),
+    price: "$11.99",
+    quantity: 4
+  },
+  {
+    name: "ACDelco Iridium Spark Plug",
+    img: require("./img/Rectangle 36.png"),
+    price: "$11.99",
+    quantity: 4
   },
   {
     name: "ACDelco Iridium Spark Plug",
@@ -89,7 +101,7 @@ function App() {
         )}
       </Routes> */}
 
-      {/* <Cart items={items} /> */}
+      <Cart items={items} />
       
       <div className="parts-cards">
         {cards.map((card) =>

@@ -2,11 +2,13 @@ html {
   --brand-red: #E51837;
   --text-grey: #4E5368;
   --detail-grey: #9E9FAD;
+  --line-grey: #C5C6D7;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 button, input {

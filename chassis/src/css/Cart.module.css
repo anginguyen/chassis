@@ -4,9 +4,13 @@
     right: 0;
     height: 100vh;
     padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
 }
 
-.top {
+.top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,6 +24,67 @@
 .items {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 28px;
     margin-top: 40px;
+    height: 50vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.summary {
+    width: 100%;
+}
+
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-grey);
+    border-bottom: 1px solid var(--line-grey);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.info-price {
+    font-size: 14px;
+}
+
+.total-box {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-grey);
+}
+
+.total {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.total-price {
+    font-size: 16px;
+}
+
+.button {
+    color: white;
+    text-align: center;
+    padding: 12px;
+    background: var(--brand-red);
+    border-radius: 10px;
+    margin-top: 24px;
+    width: 100%;
+    box-sizing: border-box;
 }
