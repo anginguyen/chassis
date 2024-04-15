@@ -16,9 +16,9 @@ function Stepper({quantity}) {
 
     return (
         <div className={styles.stepper}>
-            <button className={styles.box} onClick={decrement}>-</button>
-            <input type="number" min={1} className={styles.box} value={value} />
-            <button className={styles.box} onClick={increment}>+</button>
+            <button className={`${styles.box} ${styles.button}`} onClick={decrement}>-</button>
+            <input type="number" min={1} className={`${styles.box} ${styles.input}`} value={value} />
+            <button className={`${styles.box} ${styles.button}`} onClick={increment}>+</button>
         </div>
     )
 }

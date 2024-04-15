@@ -4,7 +4,7 @@ import Stepper from './Stepper'
 function CartItem({item}) {
     return (
         <div className={styles.item}>
-            <img className={styles.img} src={item.img} alt={`${item.name} image`} />
+            <img className={styles.img} src={item.img} alt={item.name} />
 
             <div className={styles.info}>
                 <p className={styles.name}>{item.name}</p>
