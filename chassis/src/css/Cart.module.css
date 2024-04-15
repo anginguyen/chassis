@@ -1,4 +1,5 @@
 .cart {
+    background-color: var(--white);
     position: absolute;
     top: 0;
     right: 0;
@@ -18,14 +19,14 @@
 
 .title {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
+    margin-bottom: 30px;
 }
 
 .items {
     display: flex;
     flex-direction: column;
     gap: 28px;
-    margin-top: 40px;
     height: 50vh;
     overflow-y: scroll;
     width: 100%;
@@ -57,7 +58,7 @@
 
 .info-name {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .info-price {
@@ -71,7 +72,7 @@
 
 .total {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .total-price {
@@ -79,7 +80,7 @@
 }
 
 .button {
-    color: white;
+    color: var(--white);
     text-align: center;
     padding: 12px;
     background: var(--brand-red);

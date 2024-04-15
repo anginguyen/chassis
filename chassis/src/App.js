@@ -1,113 +1,38 @@
 import { Routes, Route } from 'react-router-dom';
 import Nav from './js/Nav';
-import Card from './components/js/Card';
-import Rectangle36 from './img/Rectangle 36.png';
+import Shop from './js/Shop';
 import './App.css';
-import OrderStatus from './js/OrderStatus';
-import Cart from './js/Cart';
-
-const cards = [
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-  {
-    img: Rectangle36,
-    name: "ACDelco Iridium Spark Plug",
-    price: "10"
-  },
-]
+import home_icon from "./img/home-icon.svg";
+import cart_icon from "./img/cart-icon.svg";
+import orders_icon from "./img/orders-icon.svg";
 
 const routes = [
   {
     name: "Home",
     path: "/",
-    icon: require("./img/home-icon.png")
+    icon: home_icon
   },
   {
     name: "Shop",
     path: "/shop",
-    icon: require("./img/cart-icon.png")
+    icon: cart_icon
   },
   {
     name: "Orders",
     path: "/orders",
-    icon: require("./img/orders-icon.png")
-  }
-]
-
-const items = [
-  {
-    name: "ACDelco Iridium Spark Plug",
-    img: require("./img/Rectangle 36.png"),
-    price: "$11.99",
-    quantity: 1
-  },
-  {
-    name: "ACDelco Iridium Spark Plug Blah Blah Blah Blah",
-    img: require("./img/Rectangle 36.png"),
-    price: "$11.99",
-    quantity: 2
-  },
-  {
-    name: "ACDelco Iridium Spark Plug",
-    img: require("./img/Rectangle 36.png"),
-    price: "$11.99",
-    quantity: 4
-  },
-  {
-    name: "ACDelco Iridium Spark Plug",
-    img: require("./img/Rectangle 36.png"),
-    price: "$11.99",
-    quantity: 4
-  },
-  {
-    name: "ACDelco Iridium Spark Plug",
-    img: require("./img/Rectangle 36.png"),
-    price: "$11.99",
-    quantity: 4
+    icon: orders_icon
   }
 ]
 
 function App() {
   return (
     <>
-      {/* <Nav routes={routes} />
-
+      <Nav routes={routes} />
       <Routes>
         {routes.map((route) =>
-          <Route path={route.path} element={<OrderStatus />} />
+          <Route path={route.path} element={<Shop />} />
         )}
-      </Routes> */}
-
-      <Cart items={items} />
-      
-      <div className="parts-cards">
-        {cards.map((card) =>
-          <Card img={card.img} name={card.name} price={card.price} />
-        )}
-      </div>
+      </Routes>
     </>
   );
 }

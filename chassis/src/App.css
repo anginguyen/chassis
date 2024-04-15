@@ -1,18 +1,50 @@
+@font-face {
+  font-family: DM Sans;
+  src: url('./fonts/DMSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: DM Sans;
+  font-weight: 500;
+  src: url('./fonts/DMSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: DM Sans;
+  font-weight: 600;
+  src: url('./fonts/DMSans-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: DM Sans;
+  font-weight: 800;
+  src: url('./fonts/DMSans-Bold.ttf');
+}
+
 html {
+  --background: #F6F8F9;
   --brand-red: #E51837;
+  --white: white;
   --text-grey: #4E5368;
   --detail-grey: #9E9FAD;
   --line-grey: #C5C6D7;
+  background-color: var(--background);
+  overflow: hidden;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
 }
 
 button, input {
   all: unset;
+}
+
+.container {
+  margin: 24px 35px 24px 117px;
 }
 
 .parts-cards {
@@ -20,3 +52,4 @@ button, input {
   gap: 20px;
   justify-content: center;
 }
+

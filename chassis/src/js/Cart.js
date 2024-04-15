@@ -1,13 +1,18 @@
+import { animated } from '@react-spring/web'
+import { useSpring } from '@react-spring/core'
 import CartItem from "../components/js/CartItem"
 import styles from "../css/Cart.module.css"
+import x_icon from "../img/x-icon.svg"
 
-function Cart({items}) {
+function Cart({ items, isOpen, dismiss }) {
+    const props = useSpring({ right: isOpen ? '0%' : '-30%'})
+
     return (
-        <div className={styles.cart}>
+        <animated.div className={styles.cart} style={props}>
             <div className={styles.top}>
                 <div className={styles['top-row']}>
                     <p className={styles.title}>Your Shopping Cart</p>
-                    <button className={styles.title}>X</button>
+                    <button className={styles.title}><img src={x_icon} alt="X icon" onClick={dismiss}/></button>
                 </div>
 
                 <div className={styles.items}>
@@ -44,7 +49,7 @@ function Cart({items}) {
 
                 <button className={styles.button}>CHECKOUT</button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 
