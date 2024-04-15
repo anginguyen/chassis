@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "./supabaseClient";
-import OrderStatusRow from "./components/js/OrderStatusRow";
+import { supabase } from "../helpers/supabaseClient";
+import OrderStatusRow from "../components/js/OrderStatusRow";
 
 function OrderStatus() {
     const [orders, setOrders] = useState([]);

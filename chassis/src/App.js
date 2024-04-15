@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import Card from './Card';
+import Card from './components/js/Card';
 import './App.css';
 
 const cards = [
