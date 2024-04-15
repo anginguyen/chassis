@@ -1,39 +1,40 @@
 import { Routes, Route } from 'react-router-dom';
 import Nav from './js/Nav';
 import Card from './components/js/Card';
+import Rectangle36 from './img/Rectangle 36.png';
 import './App.css';
 import OrderStatus from './js/OrderStatus';
 import Cart from './js/Cart';
 
 const cards = [
   {
-    img: "Rectangle 36.png",
+    img: Rectangle36,
     name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
   {
-    img: "logo.svg",
-    name: "Test Name 2",
+    img: Rectangle36,
+    name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
   {
-    img: "logo.svg",
-    name: "Test Name 3",
+    img: Rectangle36,
+    name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
   {
-    img: "logo.svg",
-    name: "Test Name 3",
+    img: Rectangle36,
+    name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
   {
-    img: "logo.svg",
-    name: "Test Name 3",
+    img: Rectangle36,
+    name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
   {
-    img: "logo.svg",
-    name: "Test Name 3",
+    img: Rectangle36,
+    name: "ACDelco Iridium Spark Plug",
     price: "10"
   },
 ]
