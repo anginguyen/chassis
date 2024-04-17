@@ -1,6 +1,7 @@
 .stepper {
     display: flex;
     gap: 4px;
+    
 }
 
 .box {
@@ -10,10 +11,12 @@
     border: 0.5px solid var(--detail-grey);
     border-radius: 8px;
     padding: 3px 6px;
+    
 }
 
 .button {
     width: 15px;
+    
 }
 
 .input {
@@ -24,4 +27,5 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    
 }

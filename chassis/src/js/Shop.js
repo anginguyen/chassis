@@ -10,7 +10,7 @@ const items = [
         name: "ACDelco Iridium Spark Plug",
         img: require("../img/Rectangle 36.png"),
         price: "$11.99",
-        quantity: 1
+        quantity: 1,
     },
     {
         name: "ACDelco Iridium Spark Plug Blah Blah Blah Blah",
@@ -42,32 +42,98 @@ const cards = [
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
     },
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
     },
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
     },
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
     },
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
     },
     {
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
-        price: "10"
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
+    },
+    {
+        img: Rectangle36,
+        name: "ACDelco Iridium Spark Plug",
+        price: "11.99",
+        quantity: 4
     },
 ]
 
@@ -90,7 +156,7 @@ function Shop() {
                 <div className="cards-container">
                     {cards.map((card, index) => (
                     <div className="card-box" key={index}>
-                        <Card img={card.img} name={card.name} price={card.price} />
+                        <Card img={card.img} name={card.name} price={card.price} quantity = {card.quantity}/>
                     </div>
                     ))}
                 </div>
