@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from '../css/Shop.module.css'
+import Search from '../components/js/Search'
 import Cart from './Cart'
 import Card from '../components/js/Card'
 import cart_icon from '../img/cart-icon--black.svg'
@@ -144,14 +145,21 @@ function Shop() {
         setIsCartOpen(false);
     }
 
+    const handleSearch = (selected) => {
+        console.log(selected);
+    }  
+
     return (
         <>
             <Cart items={items} isOpen={isCartOpen} dismiss={dismiss} />
 
             <div className="container">
-                <p>Order Parts</p>
+                <p className={`title ${styles.title}`}>Order Parts</p>
 
-                <button onClick={() => setIsCartOpen(!isCartOpen)}><img src={cart_icon} alt="Cart icon" /></button>
+                <div className={styles.search}>
+                    <Search handleSearch={handleSearch} />
+                    <button onClick={() => setIsCartOpen(!isCartOpen)}><img src={cart_icon} alt="Cart icon" className={styles.carticon} /></button>
+                </div>
 
                 <div className="cards-container">
                     {cards.map((card, index) => (
