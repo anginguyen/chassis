@@ -87,10 +87,12 @@ function Shop() {
 
                 <button onClick={() => setIsCartOpen(!isCartOpen)}><img src={cart_icon} alt="Cart icon" /></button>
 
-                <div className="parts-cards">
-                    {cards.map((card) =>
+                <div className="cards-container">
+                    {cards.map((card, index) => (
+                    <div className="card-box" key={index}>
                         <Card img={card.img} name={card.name} price={card.price} />
-                    )}
+                    </div>
+                    ))}
                 </div>
             </div>
         </>

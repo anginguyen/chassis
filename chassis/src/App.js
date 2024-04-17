@@ -28,11 +28,14 @@ function App() {
   return (
     <>
       <Nav routes={routes} />
+
       <Routes>
         {routes.map((route) =>
           <Route path={route.path} element={<Shop />} />
         )}
       </Routes>
+
+      {/* <Cart items={items} /> */}
     </>
   );
 }

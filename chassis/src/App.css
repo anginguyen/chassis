@@ -53,3 +53,21 @@ button, input {
   justify-content: center;
 }
 
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card-box {
+  display: flex;
+  width: 274px;
+  padding: 24px;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--White, #FFF);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.05);
+}
