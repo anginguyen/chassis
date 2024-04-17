@@ -1,0 +1,16 @@
+.title {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--detail-grey);
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-bottom: 24px;
+}
+
+.carticon {
+    width: 26px;
+    height: auto;
+}

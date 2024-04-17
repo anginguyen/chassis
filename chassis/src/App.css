@@ -25,9 +25,11 @@ html {
   --background: #F6F8F9;
   --brand-red: #E51837;
   --white: white;
+  --black: #43484E;
   --text-grey: #4E5368;
   --detail-grey: #9E9FAD;
   --line-grey: #C5C6D7;
+  --light-blue-grey: #E6E6F1;
   background-color: var(--background);
 }
 
@@ -38,12 +40,21 @@ html {
   font-family: 'DM Sans', sans-serif;
 }
 
+p {
+  color: var(--black);
+}
+
 button, input {
   all: unset;
 }
 
 .container {
   margin: 24px 26px 24px 117px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .parts-cards {

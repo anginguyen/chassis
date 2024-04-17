@@ -10,17 +10,20 @@ const routes = [
   {
     name: "Home",
     path: "/",
-    icon: home_icon
+    icon: home_icon,
+    element: <Shop />
   },
   {
     name: "Shop",
     path: "/shop",
-    icon: cart_icon
+    icon: cart_icon,
+    element: <Shop />
   },
   {
     name: "Orders",
     path: "/orders",
-    icon: orders_icon
+    icon: orders_icon,
+    element: <Shop />
   }
 ]
 
@@ -31,11 +34,9 @@ function App() {
 
       <Routes>
         {routes.map((route) =>
-          <Route path={route.path} element={<Shop />} />
+          <Route path={route.path} element={route.element} />
         )}
       </Routes>
-
-      {/* <Cart items={items} /> */}
     </>
   );
 }
