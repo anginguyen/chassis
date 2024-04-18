@@ -8,7 +8,7 @@
 .icon {
     height: 24px;
     width: auto;
-    position: fixed;
+    position: absolute;
     padding-left: 8px;
 }
 
@@ -17,8 +17,6 @@
 }
 
 .input, .listbox, .inputFocus {
-    border: 1px solid var(--text-grey);
-    border-radius: 5px;
     padding: 10px;
     gap: 16px;
     width: 100%;
@@ -27,8 +25,15 @@
     box-sizing: border-box;
 }
 
+.input {
+    border: 1px solid var(--text-grey);
+    border-radius: 5px;
+}
+
 .inputFocus {
+    border: 1px solid var(--text-grey);
     background-color: var(--white);
+    border-radius: 5px;
 }
 
 .query {
@@ -36,9 +41,9 @@
 }
 
 .listbox {
-    border: 1px solid var(--text-grey);
-    border-top: transparent;
+    border-top: var(--white);
     background-color: var(--white);
+    font-weight: 400;
 }
 
 .item {
@@ -49,4 +54,8 @@
     background-color: var(--light-blue-grey);
     border-radius: 5px;
     padding: 8px;
+}
+
+.match {
+    font-weight: 600;
 }
