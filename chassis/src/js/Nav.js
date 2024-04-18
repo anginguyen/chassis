@@ -8,8 +8,8 @@ function Nav({routes}) {
         <Navbar className={`nav-bar ${styles.nav}`}>
             <img src={logo} alt="Logo" className={styles.logo} />
 
-            {routes.map((route) => 
-                <NavItem route={route} />
+            {routes.map((route, index) => 
+                <NavItem route={route} key={index} />
             )}
         </Navbar>
     )
