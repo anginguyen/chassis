@@ -51,6 +51,12 @@
     margin-bottom: 30px;
 }
 
+.icontitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .items {
     display: flex;
     flex-direction: column;
