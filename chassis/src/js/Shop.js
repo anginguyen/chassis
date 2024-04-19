@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from '../css/Shop.module.css'
 import Header from '../components/js/Header'
 import Card from '../components/js/Card'
@@ -91,17 +92,35 @@ const cards = [
 ]
 
 function Shop() {
+    const cardContainerAnim = {
+        hidden: { opacity: 1 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+        }
+    }
+
+    const cardAnim = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+    }
+    
     return (
         <div className="container">
             <Header title={"Order Parts"} />
 
-            <div className={styles.cardscontainer}>
+            <motion.ul 
+                className={styles.cardscontainer} 
+                variants={cardContainerAnim} 
+                initial="hidden"
+                animate="visible"
+            >
                 {cards.map((card, index) => (
-                    <div className={styles.cardsbox} key={index}>
+                    <motion.li className={styles.cardsbox} key={index} variants={cardAnim}>
                         <Card item={card} />
-                    </div>
+                    </motion.li>
                 ))}
-            </div>
+            </motion.ul>
         </div>
     )
 }

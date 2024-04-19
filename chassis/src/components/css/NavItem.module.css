@@ -1,5 +1,14 @@
+.navitem {
+    padding: 13px;
+    border-radius: 5px;
+    padding: 13px;
+}
+
+.navactive {
+    background-color: #E94059;
+}
+
 .navitem img {
-    color: black;
-    width: 25px;
-    height: auto;
+    display: flex;
+    justify-content: center;
 }

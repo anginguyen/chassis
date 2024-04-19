@@ -3,11 +3,9 @@ import styles from '../css/NavItem.module.css'
 
 function NavItem({route}) {
     return (
-        <div className={styles.navitem}>
-            <NavLink to={route.path}>
-                <img src={route.icon} alt={`${route.name} icon`} />
-            </NavLink>
-        </div>
+        <NavLink to={route.path} className={({ isActive }) => isActive ? `${styles.navitem} ${styles.navactive}` : styles.navitem}>
+            <img src={route.icon} alt={`${route.name} icon`} />
+        </NavLink>
     )
 }
 
