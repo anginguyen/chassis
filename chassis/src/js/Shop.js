@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import styles from '../css/Shop.module.css'
-import Search from '../components/js/Search'
-import Cart from './Cart'
+import Header from '../components/js/Header'
 import Card from '../components/js/Card'
-import cart_icon from '../img/cart-icon--black.svg'
 import Rectangle36 from '../img/Rectangle 36.png'
 
 const cards = [
@@ -50,60 +47,42 @@ const cards = [
         quantity: 4
     },
     {
+        id: 7,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 8,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 9,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 10,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 11,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
+        id: 12,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
@@ -112,41 +91,18 @@ const cards = [
 ]
 
 function Shop() {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    function dismiss() {
-        setIsCartOpen(false);
-    }
-
-    function handleCartClick() {
-        setIsCartOpen(!isCartOpen)
-    }
-
-    const handleSearch = (selected) => {
-        if (selected) console.log(selected);
-    }  
-
     return (
-        <>
-            <Cart isOpen={isCartOpen} dismiss={dismiss} />
+        <div className="container">
+            <Header title={"Order Parts"} />
 
-            <div className="container">
-                <p className={`title ${styles.title}`}>Order Parts</p>
-
-                <div className={styles.search}>
-                    <Search handleSearch={handleSearch} />
-                    <button onClick={() => handleCartClick()}><img src={cart_icon} alt="Cart icon" className={styles.carticon} /></button>
-                </div>
-
-                <div className="cards-container">
-                    {cards.map((card, index) => (
-                    <div className="card-box" key={index}>
+            <div className={styles.cardscontainer}>
+                {cards.map((card, index) => (
+                    <div className={styles.cardsbox} key={index}>
                         <Card item={card} />
                     </div>
-                    ))}
-                </div>
+                ))}
             </div>
-        </>
+        </div>
     )
 }
 
