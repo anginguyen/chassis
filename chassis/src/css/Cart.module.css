@@ -1,6 +1,5 @@
 .background {
     width: 100%;
-    backdrop-filter: blur(2px);
     position: fixed;
     top: 0;
     right: 0;
