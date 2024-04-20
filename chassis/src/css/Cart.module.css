@@ -116,18 +116,7 @@
 .cartbtns {
     margin-top: 24px;
     font-size: 16px;
-}
-
-.continuebtn {
-    color: var(--white);
-    padding: 12px;
-    background: var(--brand-red);
-    width: 100%;
-}
-
-.checkoutbtn {
-    border: 2px solid var(--black);
-    padding: 12px;
-    margin-top: 16px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

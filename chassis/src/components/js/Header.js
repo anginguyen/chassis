@@ -3,8 +3,9 @@ import Search from './Search'
 import Cart from '../../js/Cart'
 import Filter from './Filter'
 import styles from '../css/Header.module.css'
-import cart_icon from '../../img/cart-icon--black.svg'
 import filter_icon from '../../img/filter-icon.svg'
+import cart_icon from '../../img/cart-icon--black.svg'
+import user_icon from '../../img/user-icon.svg'
 
 function Header({ title }) {
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -44,7 +45,10 @@ function Header({ title }) {
                         <button className={styles.filters} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
                     </div>
 
-                    <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.carticon} /></button>
+                    <div className={styles.left}>
+                        <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
+                        <button><img src={user_icon} alt="User profile icon" className={styles.icon} /></button>
+                    </div>
                 </div>
             </div>
         </>

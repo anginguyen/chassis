@@ -6,8 +6,24 @@ import './css/App.css';
 import home_icon from "./img/home-icon.svg";
 import cart_icon from "./img/cart-icon.svg";
 import orders_icon from "./img/orders-icon.svg";
+import Checkout from './js/Checkout';
 
 const routes = [
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/shop",
+    element: <Shop />
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />
+  }
+]
+
+const nav_routes = [
   {
     name: "Home",
     path: "/",
@@ -31,7 +47,7 @@ const routes = [
 function App() {
   return (
     <>
-      <Nav routes={routes} />
+      <Nav routes={nav_routes} />
 
       <Routes>
         {routes.map((route, index) =>

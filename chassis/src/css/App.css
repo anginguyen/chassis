@@ -27,6 +27,11 @@ button, input, select {
   padding: 12px 36px;
 }
 
+.stretch-btn {
+  padding: 12px 0;
+  width: 100%;
+}
+
 .red-btn {
   color: var(--white);
   background-color: var(--brand-red);
@@ -34,4 +39,14 @@ button, input, select {
 
 .red-btn:hover {
   background-color: var(--red-hover);
+}
+
+.outline-btn {
+  border: 2px solid var(--black);
+  border-radius: 10px;
+}
+
+.outline-btn:hover {
+  color: var(--brand-red);
+  border-color: var(--brand-red);
 }
