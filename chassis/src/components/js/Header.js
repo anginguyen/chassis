@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Search from './Search'
-import Cart from '../../js/Cart'
+import CartPopup from './CartPopup'
 import Filter from './Filter'
 import styles from '../css/Header.module.css'
 import cart_icon from '../../img/cart-icon--black.svg'
@@ -33,7 +33,7 @@ function Header({ title }) {
     return (
         <>
             <Filter isOpen={isFilterOpen} dismiss={dismissFilter} />
-            <Cart isOpen={isCartOpen} dismiss={dismissCart} />
+            <CartPopup isOpen={isCartOpen} dismiss={dismissCart} />
 
             <div className={styles.header}>
                 <p className={styles.title}>{title}</p>

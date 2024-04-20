@@ -3,15 +3,15 @@ import { animated } from '@react-spring/web'
 import { useSpring } from '@react-spring/core'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import useLocalStorageState from 'use-local-storage-state'
-import { getPriceSummary } from '../helpers/cartUtils'
-import CartItem from "../components/js/CartItem"
-import styles from "../css/Cart.module.css"
-import x_icon from "../img/x-icon.svg"
-import logo from "../img/logo--grey.svg"
-import checkmark from "../img/checkmark.svg"
+import { getPriceSummary } from '../../helpers/cartUtils'
+import CartItem from "./CartItem"
+import styles from "../css/CartPopup.module.css"
+import x_icon from "../../img/x-icon.svg"
+import logo from "../../img/logo--grey.svg"
+import checkmark from "../../img/checkmark.svg"
 
 
-function Cart({  isOpen, dismiss }) {
+function CartPopup({  isOpen, dismiss }) {
     // Animation variables
     const cartProps = useSpring({ right: isOpen ? '0%' : '-28%' });
     const backgroundProps = useSpring({
@@ -143,4 +143,4 @@ function Cart({  isOpen, dismiss }) {
     )
 }
 
-export default Cart;
+export default CartPopup;
