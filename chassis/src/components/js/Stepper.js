@@ -1,23 +1,10 @@
-import { useState } from 'react'
 import styles from '../css/Stepper.module.css'
 
-function Stepper({quantity}) {
-    const [value, setValue] = useState(quantity);
-
-    function decrement() {
-        if (value-1 >= 1) {
-            setValue(value - 1);
-        }
-    }
-
-    function increment() {
-        setValue(value + 1);
-    }
-
+function Stepper({ quantity, increment, decrement }) {
     return (
         <div className={styles.stepper}>
             <button className={`${styles.box} ${styles.button}`} onClick={decrement}>-</button>
-            <input type="number" min={1} className={`${styles.box} ${styles.input}`} value={value} />
+            <input type="number" min={1} className={`${styles.box} ${styles.input}`} value={quantity} />
             <button className={`${styles.box} ${styles.button}`} onClick={increment}>+</button>
         </div>
     )

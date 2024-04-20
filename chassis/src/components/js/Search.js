@@ -9,8 +9,8 @@ function Search({ handleSearch }) {
     const [listbox, setListbox] = useState({});
 
     async function handleChange(query) {
-        if (query == value) return;
-
+        if (query === value) return;
+        
         setValue(query);
         const { data } = await supabase.from('car_parts').select().ilike('name', `%${query}%`);
         const listbox = {
@@ -25,7 +25,7 @@ function Search({ handleSearch }) {
     return (
         <div className={styles.searchbar}>
             <Turnstone
-                debounceWait={250}
+                debounceWait={10}
                 id="search"
                 styles={styles}
                 listbox={listbox}

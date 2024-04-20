@@ -1,0 +1,39 @@
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--detail-grey);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-bottom: 24px;
+}
+
+.search {
+    display: flex;
+    gap: 24px;
+    width: 70%;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--light-blue-grey);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.filtericon {
+    width: 24px;
+    height: auto;
+}
+
+.carticon {
+    width: 26px;
+    height: auto;
+}

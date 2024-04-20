@@ -1,136 +1,89 @@
-import { useState } from 'react'
+import { motion } from "framer-motion";
 import styles from '../css/Shop.module.css'
-import Search from '../components/js/Search'
-import Cart from './Cart'
+import Header from '../components/js/Header'
 import Card from '../components/js/Card'
-import cart_icon from '../img/cart-icon--black.svg'
 import Rectangle36 from '../img/Rectangle 36.png'
-
-const items = [
-    {
-        name: "ACDelco Iridium Spark Plug",
-        img: require("../img/Rectangle 36.png"),
-        price: "$11.99",
-        quantity: 1,
-    },
-    {
-        name: "ACDelco Iridium Spark Plug Blah Blah Blah Blah",
-        img: require("../img/Rectangle 36.png"),
-        price: "$11.99",
-        quantity: 2
-    },
-    {
-        name: "ACDelco Iridium Spark Plug",
-        img: require("../img/Rectangle 36.png"),
-        price: "$11.99",
-        quantity: 4
-    },
-    {
-        name: "ACDelco Iridium Spark Plug",
-        img: require("../img/Rectangle 36.png"),
-        price: "$11.99",
-        quantity: 4
-    },
-    {
-        name: "ACDelco Iridium Spark Plug",
-        img: require("../img/Rectangle 36.png"),
-        price: "$11.99",
-        quantity: 4
-    }
-]
 
 const cards = [
     {
+        id: 1,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 2,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 3,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 4,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 5,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 6,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 7,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 8,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 9,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 10,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
+        id: 11,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
         quantity: 4
     },
     {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
+        id: 12,
         img: Rectangle36,
         name: "ACDelco Iridium Spark Plug",
         price: "11.99",
@@ -139,37 +92,36 @@ const cards = [
 ]
 
 function Shop() {
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    function dismiss() {
-        setIsCartOpen(false);
+    const cardContainerAnim = {
+        hidden: { opacity: 1 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+        }
     }
 
-    const handleSearch = (selected) => {
-        console.log(selected);
-    }  
-
+    const cardAnim = {
+        hidden: { opacity: 0, y: 10 },
+        visible: { opacity: 1, y: 0 }
+    }
+    
     return (
-        <>
-            <Cart items={items} isOpen={isCartOpen} dismiss={dismiss} />
+        <div className="container">
+            <Header title="Order Parts" />
 
-            <div className="container">
-                <p className={`title ${styles.title}`}>Order Parts</p>
-
-                <div className={styles.search}>
-                    <Search handleSearch={handleSearch} />
-                    <button onClick={() => setIsCartOpen(!isCartOpen)}><img src={cart_icon} alt="Cart icon" className={styles.carticon} /></button>
-                </div>
-
-                <div className="cards-container">
-                    {cards.map((card, index) => (
-                    <div className="card-box" key={index}>
-                        <Card img={card.img} name={card.name} price={card.price} quantity = {card.quantity}/>
-                    </div>
-                    ))}
-                </div>
-            </div>
-        </>
+            <motion.ul 
+                className={styles.cardscontainer} 
+                variants={cardContainerAnim} 
+                initial="hidden"
+                animate="visible"
+            >
+                {cards.map((card, index) => (
+                    <motion.li className={styles.cardsbox} key={index} variants={cardAnim}>
+                        <Card item={card} />
+                    </motion.li>
+                ))}
+            </motion.ul>
+        </div>
     )
 }
 
