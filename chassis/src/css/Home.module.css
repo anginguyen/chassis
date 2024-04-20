@@ -73,13 +73,3 @@
     font-weight: 500;
     margin-bottom: 8px;
 }
-
-.confirmbtn {
-    color: var(--white);
-    background-color: var(--brand-red);
-    padding: 12px 36px;
-}
-
-.confirmbtn:hover {
-    background-color: var(--red-hover);
-}

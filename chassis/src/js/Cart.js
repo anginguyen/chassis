@@ -44,7 +44,7 @@ function Cart({  isOpen, dismiss }) {
     }, [items]);
 
     function updatePriceSummary() {
-        const [ subtotal, fees, shipping, total ] = getPriceSummary();
+        const [subtotal, fees, shipping, total] = getPriceSummary();
         setSubtotal(subtotal);
         setFees(fees);
         setShipping(shipping);

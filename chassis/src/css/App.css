@@ -22,3 +22,16 @@ button, input, select {
   border-radius: 10px;
   box-sizing: border-box;
 }
+
+.normal-size-btn {
+  padding: 12px 36px;
+}
+
+.red-btn {
+  color: var(--white);
+  background-color: var(--brand-red);
+}
+
+.red-btn:hover {
+  background-color: var(--red-hover);
+}

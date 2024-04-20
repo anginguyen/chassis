@@ -225,7 +225,7 @@ function Home() {
                                 <Dropdown options={yearOptions} />
                             </div>
 
-                            <button className={`button ${styles.confirmbtn}`} onClick={() => navigate('/shop')}>CONFIRM</button>
+                            <button className="button red-btn normal-size-btn" onClick={() => navigate('/shop')}>CONFIRM</button>
                         </div>
                     </div>
                 </motion.div>
