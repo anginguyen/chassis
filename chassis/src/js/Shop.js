@@ -101,13 +101,13 @@ function Shop() {
     }
 
     const cardAnim = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
+        hidden: { opacity: 0, y: 10 },
+        visible: { opacity: 1, y: 0 }
     }
     
     return (
         <div className="container">
-            <Header title={"Order Parts"} />
+            <Header title="Order Parts" />
 
             <motion.ul 
                 className={styles.cardscontainer} 
