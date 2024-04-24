@@ -16,7 +16,13 @@
 
 .button {
     width: 15px;
-    
+    cursor: pointer;
+    transition: scale 150ms linear;
+}
+
+.button:active {
+    scale: 0.9;
+    transition: scale 150ms linear;
 }
 
 .input {

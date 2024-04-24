@@ -3,7 +3,7 @@ import { incrementQuantity, decrementQuantity, deleteFromCart } from '../../help
 import styles from '../css/CartItem.module.css'
 import Stepper from './Stepper'
 
-function CartItem({ item, update }) {
+function CartItem({ item, update, added }) {
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
@@ -34,10 +34,18 @@ function CartItem({ item, update }) {
             <div className={styles.info}>
                 <p className={styles.name}>{item.name}</p>
 
-                <div className={styles['price-quantity']}>
-                    <p className={styles.price}>${item.price}</p>
-                    <Stepper quantity={quantity} increment={increment} decrement={decrement} />
-                </div>
+
+                {added ? 
+                    <div className={styles['price-quantity']}>
+                        <p className={styles.quantity}>QTY: {quantity}</p>
+                        <p className={styles.price}>${item.price}</p>
+                    </div> 
+                : 
+                    <div className={styles['price-quantity']}>
+                        <p className={styles.price}>${item.price}</p>
+                        <Stepper quantity={quantity} increment={increment} decrement={decrement} />
+                    </div>
+                }
             </div>
         </div>
     )

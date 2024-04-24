@@ -11,8 +11,7 @@ import x_icon from "../img/x-icon.svg"
 import logo from "../img/logo--grey.svg"
 import checkmark from "../img/checkmark.svg"
 
-
-function Cart({  isOpen, dismiss }) {
+function Cart({ isOpen, dismiss, added, addedItem }) {
     const navigate = useNavigate();
 
     // Animation variables
@@ -25,7 +24,6 @@ function Cart({  isOpen, dismiss }) {
 
     // State variables 
     const [isEmpty, setIsEmpty] = useState(true);
-    const [added, setAdded] = useState(false);
     const [items, ] = useLocalStorageState('cart', { defaultValue: [] });
     const [subtotal, setSubtotal] = useState(0);
     const [fees, setFees] = useState(0);
@@ -54,26 +52,19 @@ function Cart({  isOpen, dismiss }) {
         setTotal(total);
     }
 
-    function dismissCart() {
-        dismiss();
-        setTimeout(() => {
-            setAdded(false);
-        }, 500);
-    }
-
     function handleContinue() {
-        dismissCart()
+        dismiss();
         navigate('/shop');
     }
 
     function handleCheckout() {
         dismiss();
-        navigate('/checkout');
+        navigate('/shop/checkout');
     }
 
     return (
         <>
-            <animated.div className={styles.background} style={backgroundProps} onClick={dismissCart}></animated.div>
+            <animated.div className={styles.background} style={backgroundProps} onClick={dismiss}></animated.div>
 
             <animated.div className={styles.cart} style={cartProps}>
                 {added ? 
@@ -83,25 +74,38 @@ function Cart({  isOpen, dismiss }) {
                                 <img src={checkmark} alt="Checkmark icon" />
                                 Added to Cart
                             </p>
-                            <button className={styles.title}><img src={x_icon} alt="X icon" onClick={dismissCart}/></button>
+                            <button className={styles.title}><img src={x_icon} alt="X icon" onClick={dismiss}/></button>
+                        </div>
+
+                        <CartItem item={addedItem} key={addedItem.id} update={updatePriceSummary} added={true} />
+
+                        <div className={styles.addedSummary}>
+                            <p className={styles.subtitle}>Cart ({items.length} {items.length == 1 ? "item" : "items"})</p>
+
+                            <div className={styles.addedInfo}>
+                                <div className={`${styles['info-item']}`}>
+                                    <p className={styles.total}>Total</p>
+                                    <p className={styles['total-price']}>${total}</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div className={styles.cartbtns}>
-                            <button className={`${styles.continuebtn} button`} onClick={dismissCart}>CONTINUE SHOPPING</button>
-                            <button className={`${styles.checkoutbtn} button`}>CHECKOUT</button>
+                            <button className="button stretch-btn red-btn" onClick={handleContinue}>CONTINUE SHOPPING</button>
+                            <button className="button stretch-btn grey-outline-btn" onClick={handleCheckout}>CHECKOUT</button>
                         </div>
                     </>  
                 : (isEmpty ? 
                     <>
                         <div className={styles.header}>
                             <p className={styles.title}>Your Shopping Cart</p>
-                            <button className={styles.title}><img src={x_icon} alt="X icon" onClick={dismissCart}/></button>
+                            <button className={styles.title}><img src={x_icon} alt="X icon" onClick={dismiss}/></button>
                         </div>
 
                         <div className={styles.emptycontent}>
                             <img src={logo} alt="logo" />
                             <p className={styles.msg}>Your cart is empty</p>
-                            <button className="button red-btn stretch-btn" onClick={dismiss}>CONTINUE SHOPPING</button>
+                            <button className="button red-btn stretch-btn" onClick={handleContinue}>CONTINUE SHOPPING</button>
                         </div>
                     </>
                     :
@@ -114,7 +118,7 @@ function Cart({  isOpen, dismiss }) {
 
                             <div className={styles.items} ref={parent}>
                                 {items.map((item) =>
-                                    <CartItem item={item} key={item.id} update={updatePriceSummary} />
+                                    <CartItem item={item} key={item.id} update={updatePriceSummary} added={false} />
                                 )}
                             </div>
                         </div>
@@ -146,7 +150,7 @@ function Cart({  isOpen, dismiss }) {
 
                             <div className={styles.cartbtns}>
                                 <button className="button red-btn stretch-btn" onClick={handleContinue}>CONTINUE SHOPPING</button>
-                                <button className="button outline-btn stretch-btn" onClick={handleCheckout}>CHECKOUT</button>
+                                <button className="button red-outline-btn stretch-btn" onClick={handleCheckout}>CHECKOUT</button>
                             </div>
                         </div>
                     </div>

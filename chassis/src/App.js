@@ -9,6 +9,7 @@ import orders_icon from "./img/orders-icon.svg";
 import ProductDetails from './js/ProductDetails';
 import Checkout from './js/Checkout';
 
+
 const routes = [
   {
     path: "/",
@@ -19,9 +20,17 @@ const routes = [
     element: <Shop />
   },
   {
-    path: "/checkout",
+    path: "/shop/:query",
+    element: <Shop />
+  },
+  {
+    path: "/shop/product/:id",
+    element: <ProductDetails />
+  },
+  {
+    path: "/shop/checkout",
     element: <Checkout />
-  }
+  },
 ]
 
 const nav_routes = [
@@ -55,7 +64,6 @@ function App() {
         {routes.map((route, index) =>
           <Route path={route.path} element={route.element} key={index} />
         )}
-        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );

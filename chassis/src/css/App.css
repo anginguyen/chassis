@@ -13,6 +13,10 @@ button, input, select {
   all: unset;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   margin: 24px 26px 24px 117px;
 }
@@ -23,8 +27,19 @@ button, input, select {
   box-sizing: border-box;
 }
 
+.button:active {
+  scale: 0.95;
+  transition: scale 200ms linear;
+}
+
 .normal-size-btn {
   padding: 12px 36px;
+}
+
+.small-btn {
+  padding: 8px;
+  font-weight: 500;
+  transition: scale 150ms linear;
 }
 
 .stretch-btn {
@@ -35,18 +50,43 @@ button, input, select {
 .red-btn {
   color: var(--white);
   background-color: var(--brand-red);
+  transition: background-color 150ms linear;
 }
 
 .red-btn:hover {
   background-color: var(--red-hover);
+  transition: background-color 150ms linear;
 }
 
-.outline-btn {
+.red-outline-btn {
   border: 2px solid var(--black);
   border-radius: 10px;
+  transition: border 150ms linear, color 150ms linear;
 }
 
-.outline-btn:hover {
+.red-outline-btn:hover {
   color: var(--brand-red);
   border-color: var(--brand-red);
+  transition: border 150ms linear, color 150ms linear;
+}
+
+.grey-outline-btn {
+  border: 1px solid var(--black);
+  transition: background-color 150ms linear;
+}
+
+.grey-outline-btn:hover {
+  background-color: #f0f0f0;
+  transition: background-color 150ms linear;
+}
+
+.dark-btn {
+  background-color: var(--black);
+  color: var(--white);
+  transition: background-color 150ms linear;
+}
+
+.dark-btn:hover {
+  background-color: var(--brand-red);
+  transition: background-color 150ms linear;
 }

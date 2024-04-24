@@ -1,10 +1,13 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion } from "framer-motion";
+import { supabase } from '../helpers/supabaseClient'
 import styles from '../css/Shop.module.css'
 import Header from '../components/js/Header'
 import Card from '../components/js/Card'
 import Rectangle36 from '../img/Rectangle 36.png'
 
-const cards = [
+const items = [
     {
         id: 1,
         img: Rectangle36,
@@ -92,6 +95,17 @@ const cards = [
 ]
 
 function Shop() {
+    // const { query } = useParams();
+    // const [items, setItems] = useState([]);
+
+    const [numItems, setNumItems] = useState(0);
+    const [addedItem, setAddedItem] = useState(null);
+
+    const addItem = (item) => {
+        setNumItems(numItems + 1);
+        setAddedItem(item);
+    }
+
     const cardContainerAnim = {
         hidden: { opacity: 1 },
         visible: {
@@ -104,10 +118,21 @@ function Shop() {
         hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0 }
     }
+
+    // useEffect(() => {
+    //     if (query) {
+    //         fetchData();
+    //     }
+    // }, [query]);
+
+    // async function fetchData() {
+    //     const { data } = await supabase.from('parts').select().ilike('name', `%${decodeURI(query)}%`);
+    //     setItems(data);
+    // }
     
     return (
         <div className="container">
-            <Header title="Order Parts" />
+            <Header title="Order Parts" addedItem={addedItem} />
 
             <motion.ul 
                 className={styles.cardscontainer} 
@@ -115,9 +140,9 @@ function Shop() {
                 initial="hidden"
                 animate="visible"
             >
-                {cards.map((card, index) => (
+                {items.map((item, index) => (
                     <motion.li className={styles.cardsbox} key={index} variants={cardAnim}>
-                        <Card item={card} />
+                        <Card item={item} addItem={addItem} />
                     </motion.li>
                 ))}
             </motion.ul>

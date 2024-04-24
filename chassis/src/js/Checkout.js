@@ -112,7 +112,7 @@ function Checkout() {
 
                         <div className={styles.buttons}>
                             <button className="button red-btn stretch-btn" onClick={() => navigate('/shop')}>CONTINUE SHOPPING</button>
-                            <button className="button outline-btn stretch-btn">CHECKOUT</button>
+                            <button className="button red-outline-btn stretch-btn">CHECKOUT</button>
                         </div>
                     </div>
                 </div>

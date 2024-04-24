@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useLocalStorageState from 'use-local-storage-state'
 import Search from './Search'
 import Cart from '../../js/Cart'
 import Filter from './Filter'
@@ -7,12 +9,31 @@ import filter_icon from '../../img/filter-icon.svg'
 import cart_icon from '../../img/cart-icon--black.svg'
 import user_icon from '../../img/user-icon.svg'
 
-function Header({ title }) {
+function Header({ title, addedItem }) {
+    const navigate = useNavigate();
+    const [items, ] = useLocalStorageState('cart', { defaultValue: [] });
+    const [numItems, setNumItems] = useState(0);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [added, setAdded] = useState(false);
+
+    useEffect(() => {
+        setNumItems(items.length);
+    }, [items]);
+
+    useEffect(() => {
+        if (addedItem) {
+            setAdded(true);
+            setIsCartOpen(true);
+        }
+    }, [addedItem]);
 
     function dismissCart() {
         setIsCartOpen(false);
+
+        setTimeout(() => {
+            setAdded(false);
+        }, 500);
     }
 
     function dismissFilter() {
@@ -28,13 +49,15 @@ function Header({ title }) {
     }
 
     const handleSearch = (selected) => {
-        if (selected) console.log(selected);
+        if (selected) {
+            navigate(`/shop/${encodeURI(selected.name)}`);
+        }
     }  
 
     return (
         <>
             <Filter isOpen={isFilterOpen} dismiss={dismissFilter} />
-            <Cart isOpen={isCartOpen} dismiss={dismissCart} />
+            <Cart isOpen={isCartOpen} dismiss={dismissCart} added={added} addedItem={addedItem} />
 
             <div className={styles.header}>
                 <p className={styles.title}>{title}</p>
@@ -46,7 +69,12 @@ function Header({ title }) {
                     </div>
 
                     <div className={styles.left}>
-                        <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
+                        <div class={styles.carticon}>
+                            {numItems > 0 &&
+                                <div class={styles.cartnumber}>{numItems}</div>
+                            }
+                            <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
+                        </div>
                         <button><img src={user_icon} alt="User profile icon" className={styles.icon} /></button>
                     </div>
                 </div>

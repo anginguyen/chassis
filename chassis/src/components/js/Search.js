@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Turnstone from 'turnstone'
 import styles from '../css/Search.module.css'
 import { supabase } from '../../helpers/supabaseClient'
@@ -7,18 +7,29 @@ import search_icon from '../../img/search-icon.svg'
 function Search({ handleSearch }) {
     const [value, setValue] = useState('');
     const [listbox, setListbox] = useState({});
+    const [allData, setAllData] = useState([]);
+
+    useEffect(() => {
+        fetchAllData();
+    }, []);
+
+    async function fetchAllData() {
+        const { data } = await supabase.from('parts').select();
+        setAllData(data);
+    }
 
     async function handleChange(query) {
         if (query === value) return;
-        
+        if (!query) return;
+
         setValue(query);
-        const { data } = await supabase.from('car_parts').select().ilike('name', `%${query}%`);
+        query = query[0].toUpperCase() + query.slice(1);
+
         const listbox = {
             displayField: 'name',
-            data: data,
+            data: allData.filter(item => item.name.includes(query)),
             searchType: 'contains'
         }
-
         setListbox(listbox);
     }
 
@@ -29,7 +40,7 @@ function Search({ handleSearch }) {
                 id="search"
                 styles={styles}
                 listbox={listbox}
-                listboxIsImmutable={true}
+                listboxIsImmutable={false}
                 matchText={true}
                 maxItems={10}
                 name="search"
