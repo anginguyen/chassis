@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { animated } from '@react-spring/web'
 import { useSpring } from '@react-spring/core'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -12,6 +13,8 @@ import checkmark from "../img/checkmark.svg"
 
 
 function Cart({  isOpen, dismiss }) {
+    const navigate = useNavigate();
+
     // Animation variables
     const cartProps = useSpring({ right: isOpen ? '0%' : '-28%' });
     const backgroundProps = useSpring({
@@ -58,6 +61,16 @@ function Cart({  isOpen, dismiss }) {
         }, 500);
     }
 
+    function handleContinue() {
+        dismissCart()
+        navigate('/shop');
+    }
+
+    function handleCheckout() {
+        dismiss();
+        navigate('/checkout');
+    }
+
     return (
         <>
             <animated.div className={styles.background} style={backgroundProps} onClick={dismissCart}></animated.div>
@@ -88,7 +101,7 @@ function Cart({  isOpen, dismiss }) {
                         <div className={styles.emptycontent}>
                             <img src={logo} alt="logo" />
                             <p className={styles.msg}>Your cart is empty</p>
-                            <button className={`${styles.continuebtn} button`} onClick={dismiss}>CONTINUE SHOPPING</button>
+                            <button className="button red-btn stretch-btn" onClick={dismiss}>CONTINUE SHOPPING</button>
                         </div>
                     </>
                     :
@@ -132,8 +145,8 @@ function Cart({  isOpen, dismiss }) {
                             </div>
 
                             <div className={styles.cartbtns}>
-                                <button className={`${styles.continuebtn} button`} onClick={dismissCart}>CONTINUE SHOPPING</button>
-                                <button className={`${styles.checkoutbtn} button`}>CHECKOUT</button>
+                                <button className="button red-btn stretch-btn" onClick={handleContinue}>CONTINUE SHOPPING</button>
+                                <button className="button outline-btn stretch-btn" onClick={handleCheckout}>CHECKOUT</button>
                             </div>
                         </div>
                     </div>
