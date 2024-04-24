@@ -6,6 +6,7 @@ import './css/App.css';
 import home_icon from "./img/home-icon.svg";
 import cart_icon from "./img/cart-icon.svg";
 import orders_icon from "./img/orders-icon.svg";
+import ProductDetails from './js/ProductDetails';
 
 const routes = [
   {
@@ -26,6 +27,7 @@ const routes = [
     icon: orders_icon,
     element: <></>
   }
+  
 ]
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
         {routes.map((route, index) =>
           <Route path={route.path} element={route.element} key={index} />
         )}
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );

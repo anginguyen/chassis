@@ -138,3 +138,8 @@
   background: var(--White, #FFF);
   color: var(--almost-black, #43484E);
 }
+
+.addToCart.hover {
+  background-color: #f0f0f0; /* Light grey background when hovering */
+  color: #333; /* Dark text color for contrast */
+}
