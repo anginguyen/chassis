@@ -214,7 +214,7 @@ function Filter({ isOpen, dismiss }) {
 
                     <div className={styles.footer}>
                         <button className={styles.clearbtn}>CLEAR ALL</button>
-                        <button className="button red-btn normal-size-btn">CONFIRM</button>
+                        <button className="button red-btn normal-size-btn" onClick={dismiss}>CONFIRM</button>
                     </div>
                 </div>
             </animated.div>

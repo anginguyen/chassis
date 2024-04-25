@@ -9,7 +9,7 @@ import filter_icon from '../../img/filter-icon.svg'
 import cart_icon from '../../img/cart-icon--black.svg'
 import user_icon from '../../img/user-icon.svg'
 
-function Header({ title, addedItem }) {
+function Header({ title, addedItem, hasSearch=true }) {
     const navigate = useNavigate();
     const [items, ] = useLocalStorageState('cart', { defaultValue: [] });
     const [numItems, setNumItems] = useState(0);
@@ -48,36 +48,49 @@ function Header({ title, addedItem }) {
         setIsFilterOpen(true);
     }
 
-    const handleSearch = (selected) => {
+    const handleSelect = (selected, display) => {
         if (selected) {
-            navigate(`/shop/${encodeURI(selected.name)}`);
+            console.log(display);
+            // navigate(`/shop/${encodeURI(selected.name)}`);
         }
     }  
 
+    const handleEnter = (query, _) => {
+        if (query) {
+            navigate(`/shop/${encodeURI(query)}`);
+        }
+    }
+
     return (
         <>
-            <Filter isOpen={isFilterOpen} dismiss={dismissFilter} />
-            <Cart isOpen={isCartOpen} dismiss={dismissCart} added={added} addedItem={addedItem} />
+            {hasSearch && 
+            <>
+                <Filter isOpen={isFilterOpen} dismiss={dismissFilter} />
+                <Cart isOpen={isCartOpen} dismiss={dismissCart} added={added} addedItem={addedItem} />
+            </>
+            }
 
             <div className={styles.header}>
                 <p className={styles.title}>{title}</p>
 
-                <div className={styles.row}>
-                    <div className={styles.search}>
-                        <Search handleSearch={handleSearch} />
-                        <button className={styles.filters} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
-                    </div>
-
-                    <div className={styles.left}>
-                        <div class={styles.carticon}>
-                            {numItems > 0 &&
-                                <div class={styles.cartnumber}>{numItems}</div>
-                            }
-                            <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
+                {hasSearch && 
+                    <div className={styles.row}>
+                        <div className={styles.search}>
+                            <Search handleSelect={handleSelect} handleEnter={handleEnter} />
+                            <button className={styles.filters} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
                         </div>
-                        <button><img src={user_icon} alt="User profile icon" className={styles.icon} /></button>
+
+                        <div className={styles.left}>
+                            <div class={styles.carticon}>
+                                {numItems > 0 &&
+                                    <div class={styles.cartnumber}>{numItems}</div>
+                                }
+                                <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
+                            </div>
+                            <button><img src={user_icon} alt="User profile icon" className={styles.icon} /></button>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </>
     )

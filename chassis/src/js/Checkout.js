@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { animated } from '@react-spring/web'
-import { useSpring } from '@react-spring/core'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import useLocalStorageState from 'use-local-storage-state'
 import { getPriceSummary } from '../helpers/cartUtils'
 import Header from '../components/js/Header'
 import CheckoutItem from '../components/js/CheckoutItem'
 import styles from '../css/Checkout.module.css'
+import logo from "../img/logo--grey.svg"
 
 function Checkout() {
     const navigate = useNavigate();
@@ -47,19 +46,27 @@ function Checkout() {
 
     return (
         <div className="container">
-            <Header title="Checkout" />
+            <Header title="Checkout" hasSearch={false} />
 
             {isEmpty ? 
-                <div className={styles.header}>
-                    <p className={styles.title}>Your Shopping Cart</p>
-                    <p className={styles.subtitle}>({items.length} items)</p>
+                <div className={styles.none}>
+                    <div className={styles.header}>
+                        <p className={styles.title}>Your Shopping Cart</p>
+                        <p className={styles.subtitle}>({items.length} items)</p>
+                    </div>
+
+                    <div className={styles.emptycontent}>
+                        <img src={logo} alt="logo" className={styles.logo} />
+                        <p className={styles.msg}>Your cart is empty</p>
+                        <button className="button red-btn stretch-btn" onClick={() => navigate('/shop')}>CONTINUE SHOPPING</button>
+                    </div>
                 </div>
             :
                 <div className={styles.checkout}>
                     <div className={styles.cart}>
                         <div className={styles.header}>
                             <p className={styles.title}>Your Shopping Cart</p>
-                            <p className={styles.subtitle}>({items.length} items)</p>
+                            <p className={styles.subtitle}>({items.length} {items.length == 1 ? "item" : "items"})</p>
                         </div>
 
                         <div className={styles.allitems}>
@@ -81,7 +88,7 @@ function Checkout() {
                         <div className={styles.details}>
                             <div className={styles.detailsection}>
                                 <div className={styles.detailline}>
-                                    <p className={styles.detailname}>Subtotal ({items.length} items)</p>
+                                    <p className={styles.detailname}>Subtotal ({items.length} {items.length == 1 ? "item" : "items"})</p>
                                     <p className={styles.price}>${subtotal}</p>
                                 </div>
                             </div>

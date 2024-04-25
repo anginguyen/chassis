@@ -8,6 +8,8 @@ import cart_icon from "./img/cart-icon.svg";
 import orders_icon from "./img/orders-icon.svg";
 import ProductDetails from './js/ProductDetails';
 import Checkout from './js/Checkout';
+import Orders from './js/Orders';
+import OrderDetails from './js/OrderDetails';
 
 
 const routes = [
@@ -31,6 +33,14 @@ const routes = [
     path: "/shop/checkout",
     element: <Checkout />
   },
+  {
+    path: "/orders",
+    element: <Orders />
+  },
+  {
+    path: "/orders/detail",
+    element: <OrderDetails />
+  },
 ]
 
 const nav_routes = [
@@ -50,7 +60,7 @@ const nav_routes = [
     name: "Orders",
     path: "/orders",
     icon: orders_icon,
-    element: <></>
+    element: <Orders />
   }
   
 ]

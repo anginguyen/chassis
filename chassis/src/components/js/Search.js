@@ -4,7 +4,7 @@ import styles from '../css/Search.module.css'
 import { supabase } from '../../helpers/supabaseClient'
 import search_icon from '../../img/search-icon.svg'
 
-function Search({ handleSearch }) {
+function Search({ handleSelect, handleEnter }) {
     const [value, setValue] = useState('');
     const [listbox, setListbox] = useState({});
     const [allData, setAllData] = useState([]);
@@ -47,8 +47,8 @@ function Search({ handleSearch }) {
                 placeholder="Enter part name or number"
                 typeahead={false}
                 onChange={(query) => handleChange(query)}
-                onSelect={(selectedItem) => handleSearch(selectedItem)}
-                onEnter={(query) => handleSearch(query)}
+                onSelect={(selectedItem, displayField) => handleSelect(selectedItem, displayField)}
+                onEnter={(query, _) => handleEnter(query, _)}
             />
             <img src={search_icon} className={styles.icon} alt="search icon" />
         </div>
