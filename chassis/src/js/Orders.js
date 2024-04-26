@@ -5,7 +5,7 @@ import Header from "../components/js/Header";
 import OrderCard from "../components/js/OrderCard";
 import styles from "../css/Orders.module.css";
 
-function OrderStatus() {
+function Orders() {
     const [orders, setOrders] = useState([]);
 
     const cardContainerAnim = {
@@ -41,7 +41,7 @@ function OrderStatus() {
     }
 
     return (
-        <div class="container">
+        <div className="container">
             <Header title="Your Orders" hasSearch={false} />
 
             <div className={styles.page}>
@@ -72,4 +72,4 @@ function OrderStatus() {
     )
 }
 
-export default OrderStatus;
+export default Orders;

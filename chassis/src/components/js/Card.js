@@ -20,6 +20,10 @@ function Card({ item, addItem }) {
     }
   }
 
+  function updateQuantity(value) {
+      setQuantity(value);
+  }
+
   function handleAddToCart(event) {
     event.stopPropagation();
     addToCart(item, quantity);
@@ -45,7 +49,7 @@ function Card({ item, addItem }) {
         
         <div className={styles.split}>
           <div className={styles.price}>${item.price}</div>
-          <Stepper quantity={quantity} increment={increment} decrement={decrement} />
+          <Stepper quantity={quantity} increment={increment} decrement={decrement} update={updateQuantity} />
         </div>
         
         <div className={styles.buttonContainer}>

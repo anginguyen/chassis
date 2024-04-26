@@ -7,104 +7,155 @@ import Header from '../components/js/Header'
 import Card from '../components/js/Card'
 import Rectangle36 from '../img/Rectangle 36.png'
 
-const items = [
-    {
-        id: 1,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 2,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 3,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 4,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 5,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 6,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 7,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 8,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 9,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 10,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 11,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 12,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-]
+// const items = [
+//     {
+//         id: 1,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 2,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 3,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 4,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 5,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 6,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 7,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 8,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 9,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 10,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 11,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+//     {
+//         id: 12,
+//         img: Rectangle36,
+//         name: "ACDelco Iridium Spark Plug",
+//         price: "11.99",
+//         quantity: 4
+//     },
+// ]
 
 function Shop() {
-    // const { query } = useParams();
-    // const [items, setItems] = useState([]);
-
+    const { query } = useParams();
+    const [items, setItems] = useState([
+        {
+            id: 1,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 2,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 3,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 4,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 5,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 6,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 7,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        },
+        {
+            id: 8,
+            img: Rectangle36,
+            name: "ACDelco Iridium Spark Plug",
+            price: "11.99",
+            quantity: 4
+        }
+    ]);
     const [numItems, setNumItems] = useState(0);
     const [addedItem, setAddedItem] = useState(null);
-
-    const addItem = (item) => {
-        setNumItems(numItems + 1);
-        setAddedItem(item);
-    }
 
     const cardContainerAnim = {
         hidden: { opacity: 1 },
@@ -119,16 +170,23 @@ function Shop() {
         visible: { opacity: 1, y: 0 }
     }
 
-    // useEffect(() => {
-    //     if (query) {
-    //         fetchData();
-    //     }
-    // }, [query]);
+    useEffect(() => {
+        if (query) {
+            setItems([]);
+            fetchData();
+        }
+    }, [query]);
 
-    // async function fetchData() {
-    //     const { data } = await supabase.from('parts').select().ilike('name', `%${decodeURI(query)}%`);
-    //     setItems(data);
-    // }
+    async function fetchData() {
+        const { data } = await supabase.from('parts').select().ilike('name', `%${decodeURI(query)}%`);
+        setItems(data);
+        console.log(data);
+    }
+
+    const addItem = (item) => {
+        setNumItems(numItems + 1);
+        setAddedItem(item);
+    }
     
     return (
         <div className="container">

@@ -35,6 +35,10 @@ function ProductDetails() {
         }
     }
 
+    function updateQuantity(value) {
+        setQuantity(value);
+    }
+
     function handleAddToCart() {
         // UPDATE LATER
         product['price'] = 11.99;
@@ -91,7 +95,7 @@ function ProductDetails() {
                                 <div className= {styles.sparkTotal}>
                                     $11.99
                                 </div>
-                                <Stepper quantity={quantity} increment={increment} decrement={decrement} />
+                                <Stepper quantity={quantity} increment={increment} decrement={decrement} update={updateQuantity} />
                             </div>
                             <button className={`button stretch-btn dark-btn ${styles.buyNow}`} onClick={handleBuyNow}>BUY NOW</button>
                             <button
