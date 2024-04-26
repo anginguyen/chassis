@@ -3,9 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
-}
-
-p {
   color: var(--black);
 }
 
@@ -20,6 +17,23 @@ input:focus {
 
 .container {
   margin: 24px 26px 24px 117px;
+}
+
+.product-img-container {
+  background-color: var(--white);
+  border: 1px solid var(--detail-grey);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: clip;
+}
+
+.product-img {
+  border-radius: 15px;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .button {

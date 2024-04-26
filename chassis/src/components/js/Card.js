@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { addToCart } from '../../helpers/cartUtils';
 import Stepper from './Stepper'
 import styles from '../css/Card.module.css';
-import Rectangle36 from '../../img/Rectangle 36.png'
 
 function Card({ item, addItem }) {
     const navigate = useNavigate();
@@ -43,8 +42,10 @@ function Card({ item, addItem }) {
 
     return (
         <div className={styles.card} onClick={() => navigate(`/shop/product/${item.id}`)}>
-            <img src={Rectangle36} className={styles.image} alt={item.parts.name} />
-            {/* <img src={item.img} className={styles.image} alt={item.name} /> */}
+            <div className={`product-img-container ${styles.imageContainer}`}>
+                <img src={item.images[0]} alt={item.parts.name} className={`product-img ${styles.image}`} />
+            </div>
+
             <div className={styles.name}>
                 {item.parts.name}
             </div>

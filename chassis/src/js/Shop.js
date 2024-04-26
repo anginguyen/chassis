@@ -5,107 +5,166 @@ import { supabase } from '../helpers/supabaseClient'
 import styles from '../css/Shop.module.css'
 import Header from '../components/js/Header'
 import Card from '../components/js/Card'
-import Rectangle36 from '../img/Rectangle 36.png'
-
 
 function Shop() {
     const { query } = useParams();
     const [items, setItems] = useState([
         {
-            id: 1,
-            img: Rectangle36,
-            price: "11.99",
-            parts: {
-                name: "ACDelco Iridium Spark Plug",
-            },
-            vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
-        },
-        {
-            id: 2,
-            img: Rectangle36,
-            price: "11.99",
-            parts: {
-                name: "ACDelco Iridium Spark Plug",
-            },
-            vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
-        },
-        {
             id: 3,
-            img: Rectangle36,
-            price: "11.99",
+            price: 13.49,
+            images: [
+                "https://marvel-b1-cdn.bc0a.com/f00000000191392/media.lkqonline.com/ecomm/444/GMK4021242702K.jpg?height=400&width=400"
+            ],
             parts: {
-                name: "ACDelco Iridium Spark Plug",
+                id: 3,
+                name: "Windshield Wiper Blades",
+                number: "76622-T1W-A01",
+                description: "Windshield wiper blades for clear visibility"
             },
             vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
-        },
-        {
-            id: 4,
-            img: Rectangle36,
-            price: "11.99",
-            parts: {
-                name: "ACDelco Iridium Spark Plug",
-            },
-            vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
-        },
-        {
-            id: 5,
-            img: Rectangle36,
-            price: "11.99",
-            parts: {
-                name: "ACDelco Iridium Spark Plug",
-            },
-            vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
-        },
-        {
-            id: 6,
-            img: Rectangle36,
-            price: "11.99",
-            parts: {
-                name: "ACDelco Iridium Spark Plug",
-            },
-            vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
+                id: 1,
+                name: "LKQ",
+                url: "https://www.lkqcorp.com"
+            }
         },
         {
             id: 7,
-            img: Rectangle36,
-            price: "11.99",
+            price: 10.49,
+            images: [
+                "https://images.oreillyauto.com/parts/img/extralarge/ato/orly_xp103_404_bac.jpg",
+                "https://images.oreillyauto.com/parts/img/extralarge/ato/orly_xp103_101_fro.jpg",
+                "https://images.oreillyauto.com/parts/img/extralarge/ato/xp103_top.jpg"
+            ],
             parts: {
-                name: "ACDelco Iridium Spark Plug",
+                id: 6,
+                name: "Spark Plugs",
+                number: "12290-5R1-A01",
+                description: "Spark plugs for efficient combustion"
             },
             vendors: {
-                name: "LQK",
-                url: "google.com"
-            },
+                id: 3,
+                name: "O'Reilly Auto Parts",
+                url: "https://www.oreillyauto.com"
+            }
         },
         {
-            id: 8,
-            img: Rectangle36,
-            price: "11.99",
+            id: 4,
+            price: 16.17,
+            images: [
+                "https://www.rockauto.com/info/33/DY_210L100_Fro.jpg"
+            ],
             parts: {
-                name: "ACDelco Iridium Spark Plug",
+                id: 5,
+                name: "Timing Belt Kit",
+                number: "06141-RLV-K00",
+                description: "Timing belt kit for engine longevity"
             },
             vendors: {
-                name: "LQK",
-                url: "google.com"
+                id: 2,
+                name: "Rock Auto",
+                url: "https://www.rockauto.com"
+            }
+        },
+        {
+            id: 12,
+            price: 19.99,
+            images: [
+                "https://contentinfo.autozone.com/znetcs/product-info/en/US/chl/SA8755/image/8/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/chl/SA8755/2/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/chl/SA8755/3/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/chl/SA8755/4/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/chl/SA8755/5/image/10/"
+              ],
+            parts: {
+                id: 2,
+                name: "Engine Air Filter",
+                number: "17220-5G0-A00",
+                description: "Engine air filter for optimal performance"
             },
+            vendors: {
+                id: 4,
+                name: "AutoZone",
+                url: "https://www.autozone.com"
+            }
+        },
+        {
+            id: 20,
+            price: 89.99,
+            images: [
+                "https://contentinfo.autozone.com/znetcs/product-info/en/US/drm/621-639/image/8/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/drm/621-639/2/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/drm/621-639/3/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/drm/621-639/4/image/10/"
+            ],
+            parts: {
+                id: 11,
+                name: "Radiator Fan Assembly",
+                number: "19015-PZD-A00",
+                description: "Radiator fan assembly for cooling efficiency"
+            },
+            vendors: {
+                id: 4,
+                name: "AutoZone",
+                url: "https://www.autozone.com"
+            }
+        },
+        {
+            id: 21,
+            price: 47.79,
+            images: [
+                "https://www.rockauto.com/info/746/746_GD601_activant_0.jpg",
+                "https://www.rockauto.com/info/746/746_GD601_activant_1.jpg",
+                "https://www.rockauto.com/info/746/746_GD601_activant_2.jpg"
+            ],
+            parts: {
+                id: 13,
+                name: "Brake Rotors",
+                number: "45251-SZT-A10",
+                description: "Brake rotors for confident braking"
+            },
+            vendors: {
+                id: 2,
+                name: "RockAuto",
+                url: "https://www.rockauto.com"
+            }
+        },
+        {
+            id: 33,
+            price: 6.79,
+            images: [
+                "https://contentinfo.autozone.com/znetcs/product-info/en/US/tim/8835S/image/8/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/tim/8835S/2/image/10/",
+                "https://contentinfo.autozone.com/znetcs/additional-prod-images/en/US/tim/8835S/3/image/10/"
+            ],
+            parts: {
+                id: 94,
+                name: "Rear Axle Seal",
+                number: "91254-SE0-003",
+                description: "Rear axle seal for differential oil sealing"
+            },
+            vendors: {
+                id: 4,
+                name: "AutoZone",
+                url: "https://www.autozone.com"
+            }
+        },
+        {
+            id: 25,
+            price: 29.99,
+            images: [
+                "https://images.oreillyauto.com/parts/img/large/obs/597.jpg"
+            ],
+            parts: {
+                id: 23,
+                name: "Rear Brake Shoes",
+                number: "43153-S2A-010",
+                description: "Rear brake shoes for parking brake function"
+            },
+            vendors: {
+                id: 3,
+                name: "O'Reilly Auto Parts",
+                url: "https://www.oreillyauto.com"
+            }
         }
     ]);
     const [numItems, setNumItems] = useState(0);
@@ -137,6 +196,7 @@ function Shop() {
             .select(`
                 id,
                 price, 
+                images,
                 parts:part_id!inner (
                     id,
                     name,
@@ -150,7 +210,10 @@ function Shop() {
                 )
             `)
             .ilike('parts.name', `%${decodeURI(query)}%`);
-        setItems(data);
+
+        if (data) {
+            setItems(data);
+        }
     }
 
     const addItem = (item) => {

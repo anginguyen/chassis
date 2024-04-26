@@ -3,7 +3,6 @@ import { updateQuantity, deleteFromCart } from '../../helpers/cartUtils';
 import Stepper from './Stepper'
 import styles from '../css/CheckoutItem.module.css'
 import x_icon from '../../img/x-icon--grey.svg'
-import Rectangle36 from '../../img/Rectangle 36.png'
 
 function CheckoutItem({ item, update }) {
     const [quantity, setQuantity] = useState(1);
@@ -42,7 +41,9 @@ function CheckoutItem({ item, update }) {
 
     return (
         <div className={styles.item}>
-            <img src={Rectangle36} className={item.img} />
+            <div className={`product-img-container ${styles.imgcontainer}`}>
+                <img src={item.images[0]} className="product-img" />
+            </div>
 
             <div className={styles.content}>
                 <div className={styles.top}>
