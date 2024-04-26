@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { incrementQuantity, decrementQuantity, deleteFromCart } from '../../helpers/cartUtils';
+import { updateQuantity, deleteFromCart } from '../../helpers/cartUtils';
 import styles from '../css/CartItem.module.css'
 import Stepper from './Stepper'
 
@@ -11,7 +11,7 @@ function CartItem({ item, update, added }) {
     }, [item]);
 
     function increment() {
-        incrementQuantity(item.id);
+        updateQuantity(item.id, quantity+1);
         setQuantity(quantity + 1);
         update();
     }
@@ -21,9 +21,15 @@ function CartItem({ item, update, added }) {
             deleteFromCart(item);
         }
         else {
-            decrementQuantity(item.id);
+            updateQuantity(item.id, quantity-1);
             setQuantity(quantity - 1);
         }
+        update();
+    }
+
+    function updateQuantityValue(value) {
+        updateQuantity(item.id, value);
+        setQuantity(value);
         update();
     }
 
@@ -43,7 +49,7 @@ function CartItem({ item, update, added }) {
                 : 
                     <div className={styles['price-quantity']}>
                         <p className={styles.price}>${item.price}</p>
-                        <Stepper quantity={quantity} increment={increment} decrement={decrement} />
+                        <Stepper quantity={quantity} increment={increment} decrement={decrement} update={updateQuantityValue} />
                     </div>
                 }
             </div>

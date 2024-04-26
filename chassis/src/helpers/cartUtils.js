@@ -14,17 +14,10 @@ export function addToCart(item, quantity) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function incrementQuantity(id) {
+export function updateQuantity(id, value) {
     let cart = JSON.parse(localStorage.getItem('cart'));
     let itemIndex = cart.findIndex(item => item.id === id);
-    cart[itemIndex].quantity += 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-export function decrementQuantity(id) {
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    let itemIndex = cart.findIndex(item => item.id === id);
-    cart[itemIndex].quantity--;
+    cart[itemIndex].quantity = value;
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 

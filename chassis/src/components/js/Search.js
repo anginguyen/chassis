@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Turnstone from 'turnstone'
 import styles from '../css/Search.module.css'
 import { supabase } from '../../helpers/supabaseClient'
 import search_icon from '../../img/search-icon.svg'
 
-function Search({ handleSelect, handleEnter }) {
+function Search({ handleEnter }) {
+    const searchRef = useRef();
     const [value, setValue] = useState('');
-    const [listbox, setListbox] = useState({});
     const [allData, setAllData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const [showListbox, setShowListbox] = useState(false);
 
     useEffect(() => {
         fetchAllData();
@@ -18,39 +20,63 @@ function Search({ handleSelect, handleEnter }) {
         setAllData(data);
     }
 
-    async function handleChange(query) {
+    const handleChange = (query) => {
         if (query === value) return;
-        if (!query) return;
 
         setValue(query);
-        query = query[0].toUpperCase() + query.slice(1);
+        if (!query) return;
 
-        const listbox = {
-            displayField: 'name',
-            data: allData.filter(item => item.name.includes(query)),
-            searchType: 'contains'
+        query = query[0].toUpperCase() + query.slice(1);
+        setFilteredData((allData.filter(item => item.name.includes(query)).slice(0, 10)));
+    }
+
+    const handleBlur = () => {
+        setTimeout(() => {
+            setShowListbox(false);
+        }, 100);
+    }
+
+    const handleSelectItem = (selected) => {
+        setValue(selected);
+        setShowListbox(false);
+        handleEnter(selected);
+    }
+
+    const handleInputEnter = (e) => {
+        if (e.key == "Enter") {
+            searchRef.current.blur();
+            setShowListbox(false);
+            handleEnter(value);
         }
-        setListbox(listbox);
     }
 
     return (
-        <div className={styles.searchbar}>
-            <Turnstone
-                debounceWait={10}
-                id="search"
-                styles={styles}
-                listbox={listbox}
-                listboxIsImmutable={false}
-                matchText={true}
-                maxItems={10}
-                name="search"
-                placeholder="Enter part name or number"
-                typeahead={false}
-                onChange={(query) => handleChange(query)}
-                onSelect={(selectedItem, displayField) => handleSelect(selectedItem, displayField)}
-                onEnter={(query, _) => handleEnter(query, _)}
-            />
-            <img src={search_icon} className={styles.icon} alt="search icon" />
+        <div className={styles.container}>
+            <div className={styles.searchbar}>
+                <img src={search_icon} className={styles.icon} alt="search icon" />
+                <input 
+                    placeholder="Enter part name or number" 
+                    value={value}
+                    onFocus={() => setShowListbox(true)}
+                    onBlur={handleBlur}
+                    onChange={(e) => handleChange(e.target.value)} 
+                    onKeyDown={(e) => handleInputEnter(e)}
+                    className={styles.input}
+                    ref={searchRef}
+                />
+            </div>
+
+            {showListbox && value.length > 0 && 
+                <ul className={filteredData.length > 0 ? styles.listbox : "display: none; "}>
+                    {filteredData.map((data) => 
+                        <li key={data.id} className={styles.listdata} onClick={(e) => handleSelectItem(e.target.textContent)}>
+                            {(data.name).substring(0, (data.name).indexOf(value[0].toUpperCase()+value.slice(1)))}
+                            <span style={{fontWeight: 600}}>{(data.name).substring((data.name).indexOf(value[0].toUpperCase()+value.slice(1)), (data.name).indexOf(value[0].toUpperCase()+value.slice(1))+value.length)}</span>
+                            {(data.name).substring((data.name).indexOf(value[0].toUpperCase()+value.slice(1))+value.length, (data.name).length)}
+                        </li>
+                    )}
+                </ul>
+            }
         </div>
     )
 }

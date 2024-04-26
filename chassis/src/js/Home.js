@@ -158,7 +158,7 @@ function Home() {
 
     return (
         <div className={styles.home}>
-            <div class={`container ${styles.container}`}>
+            <div className={`container ${styles.container}`}>
                 <Header title="Home" />
 
                 <div className={styles.top}>
@@ -207,21 +207,21 @@ function Home() {
                     }}
                 >
                     <div className={styles.formbox}>
-                        <p class={styles.formtitle}>Enter Vehicle Details</p>
+                        <p className={styles.formtitle}>Enter Vehicle Details</p>
 
                         <div className={styles.form}>
                             <div className={styles.formgroup}>
-                                <label class={styles.formlabel}>Make</label>
+                                <label className={styles.formlabel}>Make</label>
                                 <Dropdown options={makeOptions} onChange={onChange} />
                             </div>
 
                             <div className={styles.formgroup}>
-                                <label class={styles.formlabel}>Model</label>
+                                <label className={styles.formlabel}>Model</label>
                                 <Dropdown options={make === 1 ? allModelOptions : modelOptions} />
                             </div>
 
                             <div className={styles.formgroup}>
-                                <label class={styles.formlabel}>Year</label>
+                                <label className={styles.formlabel}>Year</label>
                                 <Dropdown options={yearOptions} />
                             </div>
 

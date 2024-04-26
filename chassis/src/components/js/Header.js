@@ -48,14 +48,7 @@ function Header({ title, addedItem, hasSearch=true }) {
         setIsFilterOpen(true);
     }
 
-    const handleSelect = (selected, display) => {
-        if (selected) {
-            console.log(display);
-            // navigate(`/shop/${encodeURI(selected.name)}`);
-        }
-    }  
-
-    const handleEnter = (query, _) => {
+    const handleEnter = (query) => {
         if (query) {
             navigate(`/shop/${encodeURI(query)}`);
         }
@@ -76,14 +69,14 @@ function Header({ title, addedItem, hasSearch=true }) {
                 {hasSearch && 
                     <div className={styles.row}>
                         <div className={styles.search}>
-                            <Search handleSelect={handleSelect} handleEnter={handleEnter} />
+                            <Search handleEnter={handleEnter} />
                             <button className={styles.filters} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
                         </div>
 
                         <div className={styles.left}>
-                            <div class={styles.carticon}>
+                            <div className={styles.carticon}>
                                 {numItems > 0 &&
-                                    <div class={styles.cartnumber}>{numItems}</div>
+                                    <div className={styles.cartnumber}>{numItems}</div>
                                 }
                                 <button onClick={handleCartClick}><img src={cart_icon} alt="Cart icon" className={styles.icon} /></button>
                             </div>
