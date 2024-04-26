@@ -9,6 +9,8 @@ function Card({ item, addItem }) {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState('ADD TO CART'); // New state for button text
+  const [buttonStyle, setButtonStyle] = useState('red-outline-btn'); // New state for button style
 
   function increment() {
     setQuantity(quantity + 1);
@@ -23,9 +25,20 @@ function Card({ item, addItem }) {
   function handleAddToCart(event) {
     event.stopPropagation();
     addToCart(item, quantity);
+    setIsLoading(true);
 
     item["quantity"] = quantity;
     addItem(item);
+
+    setButtonText('ITEM ADDED');
+    setButtonStyle('green-complete-button'); // Switch to green button style
+         // Change button text
+
+        setTimeout(() => {
+            setIsLoading(false);
+            setButtonStyle('red-outline-btn'); // Revert to original style
+            setButtonText('ADD TO CART'); // Revert text after 1 second
+        }, 1000); // Delay for reverting back
   }
 
   function handleBuyNow(event) {
@@ -51,11 +64,10 @@ function Card({ item, addItem }) {
         <div className={styles.buttonContainer}>
           <button className={`button dark-btn small-btn ${styles.buyNow}`} onClick={(event) => handleBuyNow(event)}>BUY NOW</button>
           <button
-            className={`button grey-outline-btn small-btn ${styles.addToCart}`}
-            onClick={(event) => handleAddToCart(event)}
-            disabled={isLoading}
-          >
-            {isLoading ? 'LOADING...' : 'ADD TO CART'}
+                    className={`button ${buttonStyle} small-btn ${styles.addToCart}`}
+                    onClick={handleAddToCart}
+                >
+                    {buttonText}
           </button>
         </div>
       </div>

@@ -70,9 +70,27 @@ button {
   transition: border 150ms linear, color 150ms linear;
 }
 
+.green-outline-btn{
+  border: 1px solid var(--black);
+  transition: border 150ms linear, color 150ms linear;
+}
+
 .grey-outline-btn {
   border: 1px solid var(--black);
   transition: background-color 150ms linear;
+}
+
+.green-complete-button{
+  border: 2px solid var(--green);
+  color: var(--green);
+  border-radius: 10px;
+  transition: border 150ms linear, color 150ms linear;
+}
+
+.green-complete-button:hover { 
+  background-color: transparent;
+  border: 2px solid var(--green); 
+  transition: color 150ms linear, border-color 150ms linear;
 }
 
 .grey-outline-btn:hover {
