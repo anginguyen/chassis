@@ -6,12 +6,13 @@
   color: var(--black);
 }
 
-button, input, select {
+button, select {
   all: unset;
+  cursor: pointer;
 }
 
-button {
-  cursor: pointer;
+input:focus {
+  outline: none;
 }
 
 .container {

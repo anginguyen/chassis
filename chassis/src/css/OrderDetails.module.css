@@ -119,6 +119,15 @@
     width: 40%;
 }
 
+.summary {
+    padding: 0 36px 36px;
+    width: 100%;
+}
+
 .attention {
     color: var(--red-muted);
+}
+
+.better {
+    color: var(--green);
 }
