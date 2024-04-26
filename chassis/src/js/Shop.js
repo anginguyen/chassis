@@ -7,92 +7,6 @@ import Header from '../components/js/Header'
 import Card from '../components/js/Card'
 import Rectangle36 from '../img/Rectangle 36.png'
 
-// const items = [
-//     {
-//         id: 1,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 2,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 3,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 4,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 5,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 6,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 7,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 8,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 9,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 10,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 11,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-//     {
-//         id: 12,
-//         img: Rectangle36,
-//         name: "ACDelco Iridium Spark Plug",
-//         price: "11.99",
-//         quantity: 4
-//     },
-// ]
 
 function Shop() {
     const { query } = useParams();
@@ -100,58 +14,98 @@ function Shop() {
         {
             id: 1,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 2,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 3,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 4,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 5,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 6,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 7,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         },
         {
             id: 8,
             img: Rectangle36,
-            name: "ACDelco Iridium Spark Plug",
             price: "11.99",
-            quantity: 4
+            parts: {
+                name: "ACDelco Iridium Spark Plug",
+            },
+            vendors: {
+                name: "LQK",
+                url: "google.com"
+            },
         }
     ]);
     const [numItems, setNumItems] = useState(0);
@@ -178,9 +132,25 @@ function Shop() {
     }, [query]);
 
     async function fetchData() {
-        const { data } = await supabase.from('parts').select().ilike('name', `%${decodeURI(query)}%`);
+        const { data } = await supabase
+            .from('vendor_parts')
+            .select(`
+                id,
+                price, 
+                parts:part_id!inner (
+                    id,
+                    name,
+                    number,
+                    description
+                ), 
+                vendors:vendor_id (
+                    id,
+                    name,
+                    url
+                )
+            `)
+            .ilike('parts.name', `%${decodeURI(query)}%`);
         setItems(data);
-        console.log(data);
     }
 
     const addItem = (item) => {

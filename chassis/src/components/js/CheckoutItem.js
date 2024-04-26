@@ -47,11 +47,11 @@ function CheckoutItem({ item, update }) {
             <div className={styles.content}>
                 <div className={styles.top}>
                     <div className={styles.row}>
-                        <p className={styles.title}>{item.name}</p>
+                        <p className={styles.title}>{item.parts.name}</p>
                         <button onClick={deleteItem}><img src={x_icon} alt="X icon" /></button>
                     </div>
 
-                    <p className={styles.subtitle}>Part #123-123</p>
+                    <p className={styles.subtitle}>Part #{item.parts.number}</p>
                 </div>
 
                 <div className={styles.price}>${item.price}</div>

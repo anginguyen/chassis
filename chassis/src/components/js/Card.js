@@ -53,12 +53,12 @@ function Card({ item, addItem }) {
 
   return (
       <div className={styles.card} onClick={() => navigate(`/shop/product/${item.id}`)}>
-        <img src={Rectangle36} className={styles.image} alt={item.name} />
+        <img src={Rectangle36} className={styles.image} alt={item.parts.name} />
         {/* <img src={item.img} className={styles.image} alt={item.name} /> */}
         <div className={styles.name}>
-          {item.name}
+          {item.parts.name}
         </div>
-        <div className={styles.delivery}>Delivery in 1-2 days</div>
+        <div className={styles.delivery}>From {item.vendors.name}</div>
         
         <div className={styles.split}>
           <div className={styles.price}>${item.price}</div>

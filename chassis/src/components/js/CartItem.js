@@ -35,10 +35,10 @@ function CartItem({ item, update, added }) {
 
     return (
         <div className={styles.item}>
-            <img className={styles.img} src={item.img} alt={item.name} />
+            <img className={styles.img} src={item.img} alt={item.parts.name} />
 
             <div className={styles.info}>
-                <p className={styles.name}>{item.name}</p>
+                <p className={styles.name}>{item.parts.name}</p>
 
 
                 {added ? 

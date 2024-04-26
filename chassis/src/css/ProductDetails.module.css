@@ -26,31 +26,23 @@
     font-weight: 400;
     line-height: normal;
     text-decoration-line: underline;
-    margin-top: 8px;
 }
 
 .separateTitle
 {
     display: flex;
     flex-direction: row;
+    margin-top: 8px;
+    gap: 24px;
 }
 
 .partNumber{
-    color: var(--Black, #000);
-    font-family: "DM Sans";
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
-    margin-top: 8px;
-    margin-left: 24px;
-    
 }
 
 .deliveryDetails
 {
-    color: var(--almost-black, #43484E);
-    font-family: "DM Sans";
     font-weight: 400;
     font-size: 14px;
     margin-top: 8px;
@@ -138,7 +130,7 @@
     overflow: scroll;
     max-height: 412px;
     background: var(--Background, #FFFFFF);
-
+    width: 275px;
 }
   
   .smallImage {

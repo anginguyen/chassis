@@ -21,7 +21,24 @@ function ProductDetails() {
     }, [id]);
 
     async function fetchItem() {
-        const { data } = await supabase.from('parts').select().eq('id', id);
+        const { data } = await supabase
+            .from('vendor_parts')
+            .select(`
+                id,
+                price, 
+                parts:part_id!inner (
+                    id,
+                    name,
+                    number,
+                    description
+                ), 
+                vendors:vendor_id (
+                    id,
+                    name,
+                    url
+                )
+            `)
+            .eq('id', id);
         setProduct(data[0]);
     }
 
@@ -40,9 +57,6 @@ function ProductDetails() {
     }
 
     function handleAddToCart() {
-        // UPDATE LATER
-        product['price'] = 11.99;
-        
         setIsLoading(true);
         // Simulate a network request with setTimeout
         setTimeout(() => {
@@ -81,10 +95,10 @@ function ProductDetails() {
                     </div>
                     <div className = {styles.productContent}>
                         <div className={styles.productContentTop}>
-                            <h1 className={styles.title}>{product.name}</h1>
+                            <h1 className={styles.title}>{product.parts.name}</h1>
                             <div className = {styles.separateTitle}>
-                                <h2 className={styles.underlinedText}>From the ACDelco Store</h2>
-                                <h3 className={styles.partNumber}>Part #41-162</h3>
+                                <span>From <a href={product.vendors.url} className={styles.underlinedText} target="_blank">{product.vendors.name}</a></span>
+                                <h3 className={styles.partNumber}>Part #{product.parts.number}</h3>
                             </div>
                             <div className = {styles.deliveryDetails}>
                                 <h3 className= {styles.deliveryDetails}> Delivery in 1 - 2 days </h3>
@@ -93,7 +107,7 @@ function ProductDetails() {
                         <div className={styles.productContentBottom}>
                             <div className = {styles.priceQuantity}>
                                 <div className= {styles.sparkTotal}>
-                                    $11.99
+                                    ${product.price}
                                 </div>
                                 <Stepper quantity={quantity} increment={increment} decrement={decrement} update={updateQuantity} />
                             </div>
@@ -118,7 +132,7 @@ function ProductDetails() {
                                     Part#
                                 </div>
                                 <div className = {styles.productText}>
-                                    41-162
+                                    {product.parts.number}
                                 </div>
                             </div>
                             <div className = {styles.productTextSeperator}>
@@ -168,7 +182,7 @@ function ProductDetails() {
                                 Product Description
                             </div>
                             <div className = {styles.productDetails}>
-                                {product.description}
+                                {product.parts.description}
                             </div>
                         </div>
                     </div>
