@@ -11,6 +11,7 @@ import Checkout from './js/Checkout';
 import Payment from './js/Payment';
 import Orders from './js/Orders';
 import OrderDetails from './js/OrderDetails';
+import OrderConfirmed from './js/OrderConfirmed';
 
 
 const routes = [
@@ -43,6 +44,10 @@ const routes = [
   {
     path: "/shop/checkout/checkout",
     element: <Payment />
+  },
+  {
+    path: "/shop/checkout/checkout/finishOrder",
+    element: <OrderConfirmed />
   },
   {
     path: "/orders",

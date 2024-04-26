@@ -3,6 +3,8 @@ import OrderSummary from "../components/js/OrderSummary"
 import CartItem from "../components/js/CartItem"
 import styles from "../css/OrderDetails.module.css"
 import Rectangle36 from '../img/Rectangle 36.png'
+import { useNavigate } from 'react-router-dom'
+import continueShoppingButton from '../css/Checkout.module.css'
 
 const items = [
     {
@@ -103,7 +105,8 @@ const items = [
     }
 ]
 
-function OrderDetails({ order }) {
+function OrderConfirmed({ order }) {
+    const navigate = useNavigate();
     return (
         <div className="container">
             <Header title="Your Orders" hasSearch={false} />
@@ -112,25 +115,9 @@ function OrderDetails({ order }) {
                 <div className={styles.left}>
                     <div className={styles.statement}>
                         <div className={styles.header}>
-                            <p className={`${styles.title} ${styles.attention}`}>Order Confirmed</p>
+                            <p className={`${styles.title} ${styles.better}`}>Order Confirmed</p>
                             <p className={styles.subheading}>Order #182940529</p>
                             <p className={styles.paragraph}>April 24, 2024</p>
-                        </div>
-
-                        <div className={styles.notification}>
-                            <p className={styles.notificationtitle}>Some items you ordered are <span style={{fontWeight: 700}}>out of stock</span>:</p>
-
-                            <div className={styles.item}>
-                                <div className={styles.cartitem}>
-                                    <CartItem item={items[0]} added={true} />
-                                </div>
-
-                                <div className={styles.options}>
-                                    <button className="button small-btn blue-grey-btn">Change Vendor</button>
-                                    <button className="button small-btn blue-grey-btn">Order from OEM</button>
-                                    <button className={`button ${styles.blankbtn}`}>Cancel</button>
-                                </div>
-                            </div>
                         </div>
 
                         <div className={styles.content}>
@@ -194,10 +181,16 @@ function OrderDetails({ order }) {
 
                 <div className={styles.right}>
                     <OrderSummary items={items} />
+                    <div className = {styles.summary}>
+                    <div className={continueShoppingButton.buttons}>
+                            <button className="button red-btn stretch-btn" onClick={() => navigate('/shop')}>CONTINUE SHOPPING</button>
+                            
+                    </div>
+                    </div>    
                 </div>
             </div>
         </div>
     )
 }
 
-export default OrderDetails;
+export default OrderConfirmed;

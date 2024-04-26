@@ -6,6 +6,8 @@ import Rectangle36 from '../img/Rectangle 36.png'
 import search from "../components/css/Search.module.css"
 import { render } from 'react-dom';
 import React from 'react';
+import checkoutButton from '../css/Checkout.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const items = [
     {
@@ -107,6 +109,7 @@ const items = [
 ]
 
 function Payment({ order }) {
+    const navigate = useNavigate();
     return (
         <div className="container">
             <Header title="Payment" hasSearch={false} />
@@ -160,6 +163,12 @@ function Payment({ order }) {
 
                 <div className={styles.right}>
                     <OrderSummary items={items} />
+                    <div className = {styles.summary}>
+                    <div className={checkoutButton.buttons}>
+                            <button className="button red-btn stretch-btn" onClick={() => navigate('/shop/checkout/checkout/finishOrder')}>FINISH ORDER</button>
+                            
+                    </div>
+                    </div>                   
                 </div>
             </div>
         </div>
