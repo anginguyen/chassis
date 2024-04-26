@@ -8,6 +8,7 @@ import cart_icon from "./img/cart-icon.svg";
 import orders_icon from "./img/orders-icon.svg";
 import ProductDetails from './js/ProductDetails';
 import Checkout from './js/Checkout';
+import Payment from './js/Payment';
 import Orders from './js/Orders';
 import OrderDetails from './js/OrderDetails';
 
@@ -29,9 +30,19 @@ const routes = [
     path: "/shop/product/:id",
     element: <ProductDetails />
   },
+  /*
   {
     path: "/shop/checkout",
     element: <Checkout />
+  },
+  /*/
+  {
+    path: "/shop/checkout",
+    element: <Checkout />
+  },
+  {
+    path: "/shop/checkout/checkout",
+    element: <Payment />
   },
   {
     path: "/orders",
