@@ -34,7 +34,7 @@ function Header({ title, addedItem, dismissCartParam=null, hasSearch=true }) {
         setTimeout(() => {
             setAdded(false);
             if (dismissCartParam) dismissCartParam();
-        }, 100);
+        }, 300);
     }
 
     function dismissFilter() {

@@ -5,7 +5,8 @@
     gap: 16px;
 }
 
-.img {
+.imgcontainer {
+    height: 150px;
     width: 25%;
 }
 

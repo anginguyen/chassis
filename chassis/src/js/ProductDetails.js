@@ -2,7 +2,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { supabase } from '../helpers/supabaseClient'
 import styles from '../css/ProductDetails.module.css'
-import Rectangle36 from '../img/Rectangle 36.png'
 import Rectangle47 from '../img/Rectangle 47.png'
 import Header from '../components/js/Header'
 import Stepper from '../components/js/Stepper'
@@ -26,6 +25,7 @@ function ProductDetails() {
             .select(`
                 id,
                 price, 
+                images,
                 parts:part_id!inner (
                     id,
                     name,
@@ -84,14 +84,16 @@ function ProductDetails() {
                 <div className={styles.productContainer}>
                 <div className={styles.fit}>
                     <div className={styles.smallImageContainer}>
-                        <img className={styles.smallImage} src={Rectangle36} alt="Small Spark Plug 1" />
-                        <img className={styles.smallImage} src={Rectangle36} alt="Small Spark Plug 1" />
-                        <img className={styles.smallImage} src={Rectangle36} alt="Small Spark Plug 1" />
-                        <img className={styles.smallImage} src={Rectangle36} alt="Small Spark Plug 1" />
-                        <img className={styles.smallImage} src={Rectangle36} alt="Small Spark Plug 1" />
+                        {(product.images).map((image, index) =>
+                            <div className={`product-img-container ${styles.singleImgContainer}`}>
+                                <img src={image} alt={`${product.parts.name} #${index}`} className={`product-img ${styles.singleImg}`} />
+                            </div>
+                        )}
                     </div>
                     <div>
-                        <img className={styles.bigImage} src={Rectangle47} alt="Small Spark Plug 1" />
+                        <div className={`product-img-container ${styles.bigImageContainer}`}>
+                            <img className='product-img' src={product.images[0]} alt={product.parts.name + " 1"} />
+                        </div>
                     </div>
                     <div className = {styles.productContent}>
                         <div className={styles.productContentTop}>

@@ -38,7 +38,7 @@ const routes = [
     element: <Orders />
   },
   {
-    path: "/orders/detail",
+    path: "/orders/detail/:orderId",
     element: <OrderDetails />
   },
 ]

@@ -1,37 +1,32 @@
 import { Link } from 'react-router-dom'
 import styles from '../css/OrderCard.module.css'
-import Rectangle36 from '../../img/Rectangle 36.png'
 
 function OrderCard({ order }) {
+    const statusClass = (order.status).includes("Attention") ? styles.attention : styles.processing;
+    const delivery = (order.status).includes("Attention") ? "part out of stock" : "by May 1";
+    const orderDate = (order.status).includes("Attention") ? "Apr 24, 2024" : "Apr 26, 2024";
+
     return (
         <div className={styles.row}>
             <div className={styles.left}>
-                <img src={Rectangle36} alt="ordered part" className={styles.img} />
+                <div class={`product-img-container ${styles.img}`}>
+                    <img src={order.ordered_parts[0].vendor_parts.images[0]} alt="ordered part" className="product-img" />
+                </div>
 
                 <div className={styles.info}>
-                    <p className={styles.orderNumber}>Order #182940529</p>
-                    <p className={styles.orderDate}>Apr 24, 2024</p>
+                    <p className={styles.orderNumber}>Order #{order.number}</p>
+                    <p className={styles.orderDate}>{orderDate}</p>
                 </div>
             </div>
 
             <div className={styles.right}>
                 <div className={styles.status}>
-                    <p className={`${styles.orderStatus} ${styles.attention}`}>Attention Required</p>
-                    <p className={styles.deliveryDate}>part out of stock</p>
+                    <p className={`${styles.orderStatus} ${statusClass}`}>{order.status}</p>
+                    <p className={styles.deliveryDate}>{delivery}</p>
                 </div>
 
-                <Link to="/orders/detail" className={styles.details}>View Order Details</Link>
+                <Link to={`/orders/detail/${order.id}`} className={styles.details}>View Order Details</Link>
             </div>
-
-            {/* <h2>{order.status}</h2>
-            <h3>Ordered on {order.created_at}</h3>
-
-            {(order.parts_ordered).map((part) => 
-                <div className="order-info" key={part.id}>
-                    <p>{part.car_parts.name}</p>
-                    <p>Quantity: {part.quantity}</p>
-                </div>
-            )} */}
         </div>
     )
 }

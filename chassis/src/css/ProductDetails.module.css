@@ -48,14 +48,14 @@
     margin-top: 8px;
 }
 
-.pricePlug{
+.pricePlug {
     color: var(--Black, #000);
     font-family: "DM Sans";
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-  }
+}
 
 .sparkTotal{
     color: var(--Black, #000);
@@ -124,54 +124,46 @@
 }
 
 .smallImageContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     overflow: scroll;
-    max-height: 412px;
+    height: 412px;
     background: var(--Background, #FFFFFF);
-    width: 275px;
+    padding: 0 16px;
 }
   
-  .smallImage {
-     /* Adjust the spacing between small images */
-    width: 200.2px;
-    height: auto;
-    object-fit: fill;
-  }
-  
-  .bigImage {
-    margin-left: 16px;
-    border-radius: 15px;
-  }
+.singleImgContainer {
+    height: 150px;
+    margin-bottom: 24px;
+}
 
-  .productContent {
+.singleImg {
+    width: 250px;
+}
+
+.bigImageContainer {
+    width: 540px;
+    height: 412px;
+    margin-left: 16px;
+}
+
+.productContent {
     margin-left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: var(--Background, #FFFFFF);
     width: 45%;
-  }
+}
 
-  .productContentTop {
-
-  }
-
-  .productContentBottom {
-
-  }
-
-  .buyNow, .addToCart {
+.buyNow, .addToCart {
     font-size: 16px;
     font-weight: 500;
     margin-top: 8px;
-  }
+}
 
-  .buttonContainer {
+.buttonContainer {
     display: flex;
     gap: 8px;  
-  }
+}
 
 .bottom{
     background: var(--background);

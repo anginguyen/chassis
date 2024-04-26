@@ -5,8 +5,9 @@
     width: 100%;
 }
 
-.img {
+.imgcontainer {
     width: 35%;
+    height: 85px;
 }
 
 .info {
