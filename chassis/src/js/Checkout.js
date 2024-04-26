@@ -71,7 +71,7 @@ function Checkout() {
 
                         <div className={styles.allitems}>
                             <div className={styles.vendor}>
-                                <p className={styles.vendorname}>Vendor 1</p>
+                                {/* <p className={styles.vendorname}>Vendor 1</p> */}
 
                                 <div className={styles.items} ref={parent}>
                                     {items.map((item) =>
@@ -119,7 +119,7 @@ function Checkout() {
 
                         <div className={styles.buttons}>
                             <button className="button red-btn stretch-btn" onClick={() => navigate('/shop')}>CONTINUE SHOPPING</button>
-                            <button className="button red-outline-btn stretch-btn" onClick={() => navigate('/shop/checkout/checkout')}>CHECKOUT</button>
+                            <button className="button red-outline-btn stretch-btn" onClick={() => navigate('/shop/checkout/payment')}>CHECKOUT</button>
                         </div>
                     </div>
                 </div>

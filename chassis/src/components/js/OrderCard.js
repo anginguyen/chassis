@@ -9,7 +9,7 @@ function OrderCard({ order }) {
     return (
         <div className={styles.row}>
             <div className={styles.left}>
-                <div class={`product-img-container ${styles.img}`}>
+                <div className={`product-img-container ${styles.img}`}>
                     <img src={order.ordered_parts[0].vendor_parts.images[0]} alt="ordered part" className="product-img" />
                 </div>
 

@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import CartItem from "./CartItem";
 import styles from "../css/OrderSummary.module.css"
 
 
-function OrderSummary({ items }) {
+function OrderSummary({ items, subtotal, shipping, fees, total }) {
     return (
         <div className={styles.summary}>
             <div className={styles.top}>
@@ -20,21 +21,21 @@ function OrderSummary({ items }) {
                     <div className={styles.detailsection}>
                         <div className={styles.detailline}>
                             <p className={styles.detailname}>Subtotal ({items.length} {items.length == 1 ? "item" : "items"})</p>
-                            <p className={styles.price}>$101.76</p>
+                            <p className={styles.price}>${parseFloat(subtotal).toFixed(2)}</p>
                         </div>
                     </div>
 
                     <div className={styles.detailsection}>
                         <div className={styles.detailline}>
                             <p className={styles.detailname}>Estimated Shipping</p>
-                            <p className={styles.price}>$5.00</p>
+                            <p className={styles.price}>${parseFloat(shipping).toFixed(2)}</p>
                         </div>
                     </div>
 
                     <div className={styles.detailsection}>
                         <div className={styles.detailline}>
                             <p className={styles.detailname}>Fees & Estimated Tax</p>
-                            <p className={styles.price}>$17.55</p>
+                            <p className={styles.price}>${parseFloat(fees).toFixed(2)}</p>
                         </div>
                         <div className={styles.detailmore}>
                             <p>Transaction fee</p>
@@ -45,7 +46,7 @@ function OrderSummary({ items }) {
 
                 <div className={styles.total}>
                     <p className={styles.totaltext}>Total</p>
-                    <p className={styles.totalprice}>$124.31</p>
+                    <p className={styles.totalprice}>${parseFloat(total).toFixed(2)}</p>
                 </div>
             </div>
         </div>

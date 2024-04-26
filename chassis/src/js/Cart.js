@@ -31,7 +31,9 @@ function Cart({ isOpen, dismiss, added, addedItem }) {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        updatePriceSummary();
+        if (items) {
+            updatePriceSummary();
+        }
 
         if (items.length === 0) {
             const timeout = setTimeout(() => {

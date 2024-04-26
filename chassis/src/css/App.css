@@ -75,7 +75,7 @@ input:focus {
 }
 
 .red-outline-btn {
-  border: 2px solid var(--black);
+  border: 1px solid var(--black);
   border-radius: 10px;
   transition: border 150ms linear, color 150ms linear;
 }
@@ -113,13 +113,13 @@ input:focus {
 }
 
 .green-complete-button {
-  border: 2px solid var(--green);
+  border: 1px solid var(--green);
   color: var(--green);
   transition: border 150ms linear, color 150ms linear;
 }
 
 .green-complete-button:hover { 
-  border: 2px solid var(--red-hover); 
+  border: 1px solid var(--red-hover); 
   color: var(--red-hover);
   transition: color 150ms linear, border-color 150ms linear;
 }

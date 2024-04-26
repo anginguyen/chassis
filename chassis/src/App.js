@@ -31,22 +31,16 @@ const routes = [
     path: "/shop/product/:id",
     element: <ProductDetails />
   },
-  /*
-  {
-    path: "/shop/checkout",
-    element: <Checkout />
-  },
-  /*/
   {
     path: "/shop/checkout",
     element: <Checkout />
   },
   {
-    path: "/shop/checkout/checkout",
+    path: "/shop/checkout/payment",
     element: <Payment />
   },
   {
-    path: "/shop/checkout/checkout/finishOrder",
+    path: "/shop/checkout/payment/confirmation/:orderNumber",
     element: <OrderConfirmed />
   },
   {

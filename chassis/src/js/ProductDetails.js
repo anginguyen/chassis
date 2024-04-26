@@ -2,7 +2,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { supabase } from '../helpers/supabaseClient'
 import styles from '../css/ProductDetails.module.css'
-import Rectangle47 from '../img/Rectangle 47.png'
 import Header from '../components/js/Header'
 import Stepper from '../components/js/Stepper'
 import { addToCart } from '../helpers/cartUtils';
@@ -13,7 +12,8 @@ function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState();
     const [quantity, setQuantity] = useState(1);  // State for quantity
-    const [isLoading, setIsLoading] = useState(false);
+    const [buttonText, setButtonText] = useState('ADD TO CART'); // New state for button text
+    const [buttonStyle, setButtonStyle] = useState('grey-outline-btn'); // New state for button style
 
     useEffect(() => {
         fetchItem();
@@ -57,12 +57,12 @@ function ProductDetails() {
     }
 
     function handleAddToCart() {
-        setIsLoading(true);
-        // Simulate a network request with setTimeout
-        setTimeout(() => {
-            addToCart(product, quantity);
-            setIsLoading(false);
-        }, 1000);  // Adjust time as needed
+        // item["quantity"] = quantity;
+        // addItem(item);
+        addToCart(product, quantity);
+
+        setButtonText('ITEM ADDED'); // Change button text
+        setButtonStyle('green-complete-button'); // Switch to green button style
     }
 
     function handleBuyNow() {
@@ -85,7 +85,7 @@ function ProductDetails() {
                 <div className={styles.fit}>
                     <div className={styles.smallImageContainer}>
                         {(product.images).map((image, index) =>
-                            <div className={`product-img-container ${styles.singleImgContainer}`}>
+                            <div className={`product-img-container ${styles.singleImgContainer}`} key={index}>
                                 <img src={image} alt={`${product.parts.name} #${index}`} className={`product-img ${styles.singleImg}`} />
                             </div>
                         )}
@@ -115,11 +115,10 @@ function ProductDetails() {
                             </div>
                             <button className={`button stretch-btn dark-btn ${styles.buyNow}`} onClick={handleBuyNow}>BUY NOW</button>
                             <button
-                                className={`button stretch-btn grey-outline-btn ${styles.addToCart}`}
+                                className={`button stretch-btn ${buttonStyle} ${styles.addToCart}`}
                                 onClick={handleAddToCart}
-                                disabled={isLoading}
                             >
-                                {isLoading ? 'LOADING...' : 'ADD TO CART'}
+                                {buttonText}
                             </button>            
                         </div>
                     </div>

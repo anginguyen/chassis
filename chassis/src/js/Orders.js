@@ -8,11 +8,11 @@ import styles from "../css/Orders.module.css";
 function Orders() {
     const [orders, setOrders] = useState([]);
 
-    const cardContainerAnim = {
+    const containerAnim = {
         hidden: { opacity: 1 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.15 }
+            transition: { staggerChildren: 0.25 }
         }
     }
 
@@ -49,9 +49,9 @@ function Orders() {
                         )
                     )
                 )
-            `);
+            `)
+            .order('id', { ascending: false });
         setOrders(data);
-        console.log(data);
     }
 
     return (
@@ -64,7 +64,7 @@ function Orders() {
 
                     <motion.ul 
                         className={styles.orders} 
-                        variants={cardContainerAnim} 
+                        variants={containerAnim} 
                         initial="hidden"
                         animate="visible"
                     >
@@ -73,7 +73,7 @@ function Orders() {
                                 <OrderCard order={order} key={order.id} />
                             </motion.li>
                         )}
-                    </motion.ul >
+                    </motion.ul>
                 </div>
             </div>
         </div>
