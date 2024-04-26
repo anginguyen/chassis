@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
   font-family: DM Sans;
   font-weight: 400;
@@ -30,6 +26,7 @@ html {
   --background: #F6F8F9;
   --brand-red: #E51837;
   --red-hover: #BF2A41;
+  --red-muted: #D43C53;
   --white: white;
   --black: #43484E;
   --text-grey: #4E5368;

@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
 import styles from '../css/OrderCard.module.css'
 import Rectangle36 from '../../img/Rectangle 36.png'
 
-function OrderCard({order}) {
+function OrderCard({ order }) {
     return (
         <div className={styles.row}>
             <div className={styles.left}>
@@ -15,11 +16,11 @@ function OrderCard({order}) {
 
             <div className={styles.right}>
                 <div className={styles.status}>
-                    <p className={`${styles.orderStatus} ${styles.processing}`}>Processing</p>
-                    <p className={styles.deliveryDate}>by 10:00pm</p>
+                    <p className={`${styles.orderStatus} ${styles.attention}`}>Attention Required</p>
+                    <p className={styles.deliveryDate}>part out of stock</p>
                 </div>
 
-                <a className={styles.details}>View Order Details</a>
+                <Link to="/orders/detail" className={styles.details}>View Order Details</Link>
             </div>
 
             {/* <h2>{order.status}</h2>

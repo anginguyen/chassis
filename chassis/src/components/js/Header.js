@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
 import Search from './Search'
@@ -9,7 +9,7 @@ import filter_icon from '../../img/filter-icon.svg'
 import cart_icon from '../../img/cart-icon--black.svg'
 import user_icon from '../../img/user-icon.svg'
 
-function Header({ title, addedItem, hasSearch=true }) {
+function Header({ title, addedItem, dismissCartParam=null, hasSearch=true }) {
     const navigate = useNavigate();
     const [items, ] = useLocalStorageState('cart', { defaultValue: [] });
     const [numItems, setNumItems] = useState(0);
@@ -33,7 +33,8 @@ function Header({ title, addedItem, hasSearch=true }) {
 
         setTimeout(() => {
             setAdded(false);
-        }, 500);
+            if (dismissCartParam) dismissCartParam();
+        }, 100);
     }
 
     function dismissFilter() {

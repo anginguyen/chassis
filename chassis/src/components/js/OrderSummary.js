@@ -1,53 +1,8 @@
 import CartItem from "./CartItem";
 import styles from "../css/OrderSummary.module.css"
-import Rectangle36 from '../../img/Rectangle 36.png'
 
-const items = [
-    {
-        id: 1,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 2,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 3,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 4,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 5,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-    {
-        id: 6,
-        img: Rectangle36,
-        name: "ACDelco Iridium Spark Plug",
-        price: "11.99",
-        quantity: 4
-    },
-]
 
-function OrderSummary({ order }) {
+function OrderSummary({ items }) {
     return (
         <div className={styles.summary}>
             <div className={styles.top}>

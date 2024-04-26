@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Turnstone from 'turnstone'
 import styles from '../css/Search.module.css'
 import { supabase } from '../../helpers/supabaseClient'
 import search_icon from '../../img/search-icon.svg'

@@ -157,10 +157,14 @@ function Shop() {
         setNumItems(numItems + 1);
         setAddedItem(item);
     }
+
+    function dismissCart() {
+        setAddedItem(null);
+    }
     
     return (
         <div className="container">
-            <Header title="Order Parts" addedItem={addedItem} />
+            <Header title="Order Parts" addedItem={addedItem} dismissCartParam={dismissCart} />
 
             <motion.ul 
                 className={styles.cardscontainer} 
