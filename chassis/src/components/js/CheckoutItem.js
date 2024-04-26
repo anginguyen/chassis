@@ -42,7 +42,7 @@ function CheckoutItem({ item, update }) {
     return (
         <div className={styles.item}>
             <div className={`product-img-container ${styles.imgcontainer}`}>
-                <img src={item.images[0]} className="product-img" />
+                <img src={item.images[0]} alt={item.parts.name} className="product-img" />
             </div>
 
             <div className={styles.content}>

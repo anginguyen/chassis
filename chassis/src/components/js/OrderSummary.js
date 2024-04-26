@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import CartItem from "./CartItem";
 import styles from "../css/OrderSummary.module.css"
 
@@ -20,7 +19,7 @@ function OrderSummary({ items, subtotal, shipping, fees, total }) {
                 <div className={styles.details}>
                     <div className={styles.detailsection}>
                         <div className={styles.detailline}>
-                            <p className={styles.detailname}>Subtotal ({items.length} {items.length == 1 ? "item" : "items"})</p>
+                            <p className={styles.detailname}>Subtotal ({items.length} {items.length === 1 ? "item" : "items"})</p>
                             <p className={styles.price}>${parseFloat(subtotal).toFixed(2)}</p>
                         </div>
                     </div>

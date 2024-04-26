@@ -94,7 +94,12 @@ function OrderDetails() {
             {order && 
             <div className={styles.detailscontainer}>
                 <div className={styles.left}>
-                    <motion.ul className={styles.statement}>
+                    <motion.ul 
+                        className={styles.statement} 
+                        variants={containerAnim}
+                        initial="hidden"
+                        animate="visible"
+                    >
                         <motion.li key="order-details-1" variants={sectionAnim}>
                             <div className={styles.header}>
                                 <p className={`${styles.title} ${statusClass}`}>{order.status}</p>
@@ -186,9 +191,16 @@ function OrderDetails() {
                     </motion.ul>
                 </div>
 
-                <div className={styles.right}>
+                <motion.div 
+                    className={styles.right}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        delay: 1
+                    }}
+                >
                     <OrderSummary items={items} subtotal={order.subtotal} shipping={order.shipping} fees={order.fees} total={order.total} />
-                </div>
+                </motion.div>
             </div>
             }
         </div>

@@ -66,7 +66,7 @@ function Checkout() {
                     <div className={styles.cart}>
                         <div className={styles.header}>
                             <p className={styles.title}>Your Shopping Cart</p>
-                            <p className={styles.subtitle}>({items.length} {items.length == 1 ? "item" : "items"})</p>
+                            <p className={styles.subtitle}>({items.length} {items.length === 1 ? "item" : "items"})</p>
                         </div>
 
                         <div className={styles.allitems}>
@@ -88,7 +88,7 @@ function Checkout() {
                         <div className={styles.details}>
                             <div className={styles.detailsection}>
                                 <div className={styles.detailline}>
-                                    <p className={styles.detailname}>Subtotal ({items.length} {items.length == 1 ? "item" : "items"})</p>
+                                    <p className={styles.detailname}>Subtotal ({items.length} {items.length === 1 ? "item" : "items"})</p>
                                     <p className={styles.price}>${subtotal}</p>
                                 </div>
                             </div>

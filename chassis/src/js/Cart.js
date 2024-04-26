@@ -82,7 +82,7 @@ function Cart({ isOpen, dismiss, added, addedItem }) {
                         <CartItem item={addedItem} key={addedItem.id} update={updatePriceSummary} added={true} />
 
                         <div className={styles.addedSummary}>
-                            <p className={styles.subtitle}>Cart ({items.length} {items.length == 1 ? "item" : "items"})</p>
+                            <p className={styles.subtitle}>Cart ({items.length} {items.length === 1 ? "item" : "items"})</p>
 
                             <div className={styles.addedInfo}>
                                 <div className={`${styles['info-item']}`}>

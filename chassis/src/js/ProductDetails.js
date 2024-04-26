@@ -99,7 +99,7 @@ function ProductDetails() {
                         <div className={styles.productContentTop}>
                             <h1 className={styles.title}>{product.parts.name}</h1>
                             <div className = {styles.separateTitle}>
-                                <span>From <a href={product.vendors.url} className={styles.underlinedText} target="_blank">{product.vendors.name}</a></span>
+                                <span>From <a href={product.vendors.url} className={styles.underlinedText} target="_blank" rel="noreferrer">{product.vendors.name}</a></span>
                                 <h3 className={styles.partNumber}>Part #{product.parts.number}</h3>
                             </div>
                             <div className = {styles.deliveryDetails}>

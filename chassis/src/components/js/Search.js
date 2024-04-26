@@ -42,7 +42,7 @@ function Search({ handleEnter }) {
     }
 
     const handleInputEnter = (e) => {
-        if (e.key == "Enter") {
+        if (e.key === "Enter") {
             searchRef.current.blur();
             setShowListbox(false);
             handleEnter(value);
