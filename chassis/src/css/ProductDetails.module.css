@@ -131,6 +131,10 @@
     background: var(--Background, #FFFFFF);
     padding: 0 16px;
 }
+
+.smallImgContainerActive {
+    border: 2px solid #727A83;
+}
   
 .singleImgContainer {
     height: 150px;

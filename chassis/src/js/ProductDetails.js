@@ -11,6 +11,7 @@ function ProductDetails() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState();
+    const [imageIndex, setImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);  // State for quantity
     const [buttonText, setButtonText] = useState('ADD TO CART'); // New state for button text
     const [buttonStyle, setButtonStyle] = useState('grey-outline-btn'); // New state for button style
@@ -85,14 +86,14 @@ function ProductDetails() {
                 <div className={styles.fit}>
                     <div className={styles.smallImageContainer}>
                         {(product.images).map((image, index) =>
-                            <div className={`product-img-container ${styles.singleImgContainer}`} key={index}>
-                                <img src={image} alt={`${product.parts.name} #${index}`} className={`product-img ${styles.singleImg}`} />
+                            <div className={`product-img-container ${styles.singleImgContainer} ${index === imageIndex ? styles.smallImgContainerActive : ""}`} key={index}>
+                                <img src={image} alt={`${product.parts.name} #${index}`} className={`product-img ${styles.singleImg}`} onClick={() => setImageIndex(index)} />
                             </div>
                         )}
                     </div>
                     <div>
                         <div className={`product-img-container ${styles.bigImageContainer}`}>
-                            <img className='product-img' src={product.images[0]} alt={product.parts.name + " 1"} />
+                            <img className='product-img' src={product.images[imageIndex]} alt={product.parts.name + " 1"} />
                         </div>
                     </div>
                     <div className = {styles.productContent}>
