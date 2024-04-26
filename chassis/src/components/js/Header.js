@@ -71,7 +71,7 @@ function Header({ title, addedItem, dismissCartParam=null, hasSearch=true }) {
                     <div className={styles.row}>
                         <div className={styles.search}>
                             <Search handleEnter={handleEnter} />
-                            <button className={styles.filters} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
+                            <button className={`${styles.filters} blue-grey-btn`} onClick={handleFilterClick}><img src={filter_icon} alt="Filter icon" className={styles.filtericon} />Filter</button>
                         </div>
 
                         <div className={styles.left}>
