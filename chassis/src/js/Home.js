@@ -14,39 +14,7 @@ const makeOptions = [
     },
     {
         id: 2,
-        name: "Acura",
-    },
-    {
-        id: 3,
-        name: "Alfa Romeo",
-    },
-    {
-        id: 4,
-        name: "Aston Martin",
-    },
-    {
-        id: 5,
-        name: "Audi",
-    },
-    {
-        id: 6,
-        name: "BMW",
-    },
-    {
-        id: 7,
-        name: "Bentley Motors",
-    },
-    {
-        id: 8,
-        name: "Bugatti",
-    },
-    {
-        id: 9,
-        name: "Buick",
-    },
-    {
-        id: 10,
-        name: "Cadillac",
+        name: "Honda",
     },
 ]
 
