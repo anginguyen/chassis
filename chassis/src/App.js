@@ -78,13 +78,19 @@ const nav_routes = [
 function App() {
   return (
     <>
-      <Nav routes={nav_routes} />
+      {window.innerWidth > 1200 ? 
+        <>
+          <Nav routes={nav_routes} />
 
-      <Routes>
-        {routes.map((route, index) =>
-          <Route path={route.path} element={route.element} key={index} />
-        )}
-      </Routes>
+          <Routes>
+            {routes.map((route, index) =>
+              <Route path={route.path} element={route.element} key={index} />
+            )}
+          </Routes>
+        </>
+      :
+        <p className="mobile-msg"><strong>Please view on desktop.</strong> Mobile website is still being worked on.</p>
+      }
     </>
   );
 }

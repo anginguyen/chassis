@@ -133,3 +133,12 @@ input:focus {
   background-color: #C4C4D2;
   transition: background-color 150ms linear;
 }
+
+.mobile-msg {
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
