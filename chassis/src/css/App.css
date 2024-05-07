@@ -137,8 +137,10 @@ input:focus {
 .mobile-msg {
   font-size: 28px;
   display: flex;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 95%;
 }
