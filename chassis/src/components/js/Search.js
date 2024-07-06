@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from '../css/Search.module.css'
 import { supabase } from '../../helpers/supabaseClient'
 import search_icon from '../../img/search-icon.svg'
+import partsData from '../../helpers/partsData.json'
 
 function Search({ handleEnter }) {
     const searchRef = useRef();
@@ -15,8 +16,12 @@ function Search({ handleEnter }) {
     }, []);
 
     async function fetchAllData() {
-        const { data } = await supabase.from('parts').select();
-        setAllData(data);
+        /* -- SUPABASE PARTS FETCH -- */
+        // const { data } = await supabase.from('parts').select();
+        // setAllData(data);
+
+        /* -- LOCAL DATA PARTS FETCH -- */
+        setAllData(partsData);
     }
 
     const handleChange = (query) => {
@@ -26,7 +31,7 @@ function Search({ handleEnter }) {
         if (!query) return;
 
         query = query[0].toUpperCase() + query.slice(1);
-        setFilteredData((allData.filter(item => item.name.includes(query)).slice(0, 10)));
+        setFilteredData((allData.filter(item => (item.name).includes(query)).slice(0, 10)));
     }
 
     const handleBlur = () => {

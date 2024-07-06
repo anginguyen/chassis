@@ -5,7 +5,7 @@ import styles from '../css/ProductDetails.module.css'
 import Header from '../components/js/Header'
 import Stepper from '../components/js/Stepper'
 import { addToCart } from '../helpers/cartUtils';
-
+import shopData from '../helpers/shopData.json';
 
 function ProductDetails() {
     const navigate = useNavigate();
@@ -14,33 +14,37 @@ function ProductDetails() {
     const [imageIndex, setImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);  // State for quantity
     const [buttonText, setButtonText] = useState('ADD TO CART'); // New state for button text
-    const [buttonStyle, setButtonStyle] = useState('grey-outline-btn'); // New state for button style
 
     useEffect(() => {
         fetchItem();
     }, [id]);
 
     async function fetchItem() {
-        const { data } = await supabase
-            .from('vendor_parts')
-            .select(`
-                id,
-                price, 
-                images,
-                parts:part_id!inner (
-                    id,
-                    name,
-                    number,
-                    description
-                ), 
-                vendors:vendor_id (
-                    id,
-                    name,
-                    url
-                )
-            `)
-            .eq('id', id);
-        setProduct(data[0]);
+        /* -- SUPABASE PRODUCT FETCH -- */
+        // const { data } = await supabase
+        //     .from('vendor_parts')
+        //     .select(`
+        //         id,
+        //         price, 
+        //         images,
+        //         parts:part_id!inner (
+        //             id,
+        //             name,
+        //             number,
+        //             description
+        //         ), 
+        //         vendors:vendor_id (
+        //             id,
+        //             name,
+        //             url
+        //         )
+        //     `)
+        //     .eq('id', id);
+        // setProduct(data[0]);
+
+        /* -- LOCAL DATA FETCH -- */
+        const data = shopData.find(item => item.id === parseInt(id));
+        setProduct(data);
     }
 
     function increment() {
@@ -58,12 +62,8 @@ function ProductDetails() {
     }
 
     function handleAddToCart() {
-        // item["quantity"] = quantity;
-        // addItem(item);
         addToCart(product, quantity);
-
         setButtonText('ITEM ADDED'); // Change button text
-        setButtonStyle('green-complete-button'); // Switch to green button style
     }
 
     function handleBuyNow() {
@@ -116,7 +116,7 @@ function ProductDetails() {
                             </div>
                             <button className={`button stretch-btn dark-btn ${styles.buyNow}`} onClick={handleBuyNow}>BUY NOW</button>
                             <button
-                                className={`button stretch-btn ${buttonStyle} ${styles.addToCart}`}
+                                className={`button stretch-btn ${styles.addToCart}`}
                                 onClick={handleAddToCart}
                             >
                                 {buttonText}
