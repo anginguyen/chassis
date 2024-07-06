@@ -14,6 +14,7 @@ function ProductDetails() {
     const [imageIndex, setImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);  // State for quantity
     const [buttonText, setButtonText] = useState('ADD TO CART'); // New state for button text
+    const [buttonStyle, setButtonStyle] = useState('grey-outline-btn'); // New state for button style
 
     useEffect(() => {
         fetchItem();
@@ -64,6 +65,7 @@ function ProductDetails() {
     function handleAddToCart() {
         addToCart(product, quantity);
         setButtonText('ITEM ADDED'); // Change button text
+        setButtonStyle('green-complete-button'); // Switch to green button style
     }
 
     function handleBuyNow() {
@@ -116,7 +118,7 @@ function ProductDetails() {
                             </div>
                             <button className={`button stretch-btn dark-btn ${styles.buyNow}`} onClick={handleBuyNow}>BUY NOW</button>
                             <button
-                                className={`button stretch-btn ${styles.addToCart}`}
+                                className={`button stretch-btn ${buttonStyle} ${styles.addToCart}`}
                                 onClick={handleAddToCart}
                             >
                                 {buttonText}

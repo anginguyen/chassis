@@ -4,6 +4,7 @@ import { supabase } from "../helpers/supabaseClient";
 import Header from "../components/js/Header";
 import OrderCard from "../components/js/OrderCard";
 import styles from "../css/Orders.module.css";
+import ordersData from "../helpers/ordersData.json";
 
 function Orders() {
     const [orders, setOrders] = useState([]);
@@ -26,32 +27,36 @@ function Orders() {
     }, []);
 
     async function getOrders() {
-        const { data } = await supabase
-            .from("orders")
-            .select(`
-                *,
-                ordered_parts (
-                    quantity,
-                    vendor_parts:vendor_part_id (
-                        id,
-                        price, 
-                        images,
-                        parts:part_id!inner (
-                            id,
-                            name,
-                            number,
-                            description
-                        ), 
-                        vendors:vendor_id (
-                            id,
-                            name,
-                            url
-                        )
-                    )
-                )
-            `)
-            .order('id', { ascending: false });
-        setOrders(data);
+        /* -- SUPABASE ORDER FETCH -- */
+        // const { data } = await supabase
+        //     .from("orders")
+        //     .select(`
+        //         *,
+        //         ordered_parts (
+        //             quantity,
+        //             vendor_parts:vendor_part_id (
+        //                 id,
+        //                 price, 
+        //                 images,
+        //                 parts:part_id!inner (
+        //                     id,
+        //                     name,
+        //                     number,
+        //                     description
+        //                 ), 
+        //                 vendors:vendor_id (
+        //                     id,
+        //                     name,
+        //                     url
+        //                 )
+        //             )
+        //         )
+        //     `)
+        //     .order('id', { ascending: false });
+        // setOrders(data);
+
+        /* -- LOCAL DATA ORDER FETCH -- */
+        setOrders(ordersData);
     }
 
     return (

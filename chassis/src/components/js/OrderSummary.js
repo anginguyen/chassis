@@ -9,8 +9,8 @@ function OrderSummary({ items, subtotal, shipping, fees, total }) {
                 <p className={styles.title}>Order Summary</p>
 
                 <div className={styles.items}>
-                    {items.map((item) =>
-                        <CartItem item={item} added={true} />
+                    {items.map((item, id) =>
+                        <CartItem item={item} added={true} key={id} />
                     )}
                 </div>
             </div>

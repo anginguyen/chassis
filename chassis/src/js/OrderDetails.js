@@ -7,7 +7,7 @@ import OrderSummary from "../components/js/OrderSummary"
 import CartItem from "../components/js/CartItem"
 import styles from "../css/OrderDetails.module.css"
 import orderTracking from "../img/order-tracking.svg"
-
+import ordersData from "../helpers/ordersData.json"
 
 function OrderDetails() {
     const { orderId } = useParams();
@@ -35,32 +35,36 @@ function OrderDetails() {
     }, []);
 
     async function fetchOrder() {
-        const { data } = await supabase
-            .from("orders")
-            .select(`
-                *,
-                ordered_parts (
-                    quantity,
-                    vendor_parts:vendor_part_id (
-                        id,
-                        price, 
-                        images,
-                        parts:part_id!inner (
-                            id,
-                            name,
-                            number,
-                            description
-                        ), 
-                        vendors:vendor_id (
-                            id,
-                            name,
-                            url
-                        )
-                    )
-                )
-            `)
-            .eq('id', orderId);
+        /* -- SUPABASE ORDER FETCH -- */
+        // const { data } = await supabase
+        //     .from("orders")
+        //     .select(`
+        //         *,
+        //         ordered_parts (
+        //             quantity,
+        //             vendor_parts:vendor_part_id (
+        //                 id,
+        //                 price, 
+        //                 images,
+        //                 parts:part_id!inner (
+        //                     id,
+        //                     name,
+        //                     number,
+        //                     description
+        //                 ), 
+        //                 vendors:vendor_id (
+        //                     id,
+        //                     name,
+        //                     url
+        //                 )
+        //             )
+        //         )
+        //     `)
+        //     .eq('id', orderId);
+        // setOrder(data[0]);
 
+        /* -- LOCAL DATA ORDER FETCH -- */
+        const data = ordersData.filter(order => order.id === parseInt(orderId));
         setOrder(data[0]);
 
         let orderItems = [];
